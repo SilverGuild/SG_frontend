@@ -1,4 +1,4 @@
-3name: Cypress Tests
+name: Cypress Tests
 
 on: [push]
 
@@ -9,10 +9,20 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v3
-      # Install NPM dependencies, cache them correctly
-      # and run all Cypress tests
-      - name: Cypress run
-        uses: cypress-io/github-action@v5.5.1 # use the explicit version number
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v3
         with:
-          build: npm run build
+          node-version: '22.13.1'
+          cache: 'npm'
+      
+      - name: Install dependencies
+        run: npm ci
+      
+      - name: Build
+        run: npm run build
+        
+      - name: Cypress run
+        uses: cypress-io/github-action@v6 # Updated to the latest version
+        with:
           start: npm start

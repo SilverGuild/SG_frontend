@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { beau_rivage, geistSans, geistMono } from './fonts';
 import "./globals.css";
+import Header from "../components/layout/Header/header";
 
 export const metadata: Metadata = {
   title: "SilverGuild",
@@ -17,7 +18,12 @@ export default function RootLayout({
       <body
         className={`${geistSans.variable} ${geistMono.variable} ${beau_rivage.variable} antialiased`}
       >
-        {children}
+        <div className="top-0">
+          <Header />
+        </div>
+        <main>
+          {children}
+        </main>
       </body>
     </html>
   );

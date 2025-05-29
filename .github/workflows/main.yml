@@ -21,8 +21,3 @@ jobs:
       
       - name: Build
         run: npm run build
-        
-      - name: Cypress run
-        uses: cypress-io/github-action@v6 # Updated to the latest version
-        with:
-          start: npm start

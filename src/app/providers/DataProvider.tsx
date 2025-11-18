@@ -3,19 +3,23 @@
 import { createContext, useContext, useState, ReactNode } from 'react';
 import { User } from '@/types/user';
 import { Character } from '@/types/character';
+import { mockUser } from '@/lib/mock/userData';
+import { mockCharacters} from '@/lib/mock/characterData';
 
 interface DataContextType {
-    user: User;
-    setUser: (user: any) => void;
+    user: User | null;
+    setUser: (user: User | null) => void;
     characters: Character[];
-    setCharacters: (characters: any[]) => void;
+    setCharacters: (characters: Character[]) => void;
 }
 
 const DataContext = createContext<DataContextType | null>(null);
 
+const USE_MOCK_DATA = true;
+
 export function DataProvider({ children }: {children : ReactNode}) {
-    const [ user, setUser ] = useState<any>(null);
-    const [ characters, setCharacters ] = useState<any[]>([]);
+    const [ user, setUser ] = useState<User | null>(USE_MOCK_DATA ? mockUser : null);
+    const [ characters, setCharacters ] = useState<Character[]>(USE_MOCK_DATA ? mockCharacters : []);
 
     return (
         <DataContext.Provider value={{ user, setUser, characters, setCharacters }}>

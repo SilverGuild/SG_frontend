@@ -1,3 +1,5 @@
+'use client';
+
 import { useData } from '@/app/providers/DataProvider';
 import ProfileDetails from './components/ProfileDetails';
 

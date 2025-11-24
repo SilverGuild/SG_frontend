@@ -1,0 +1,11 @@
+// SG API configuration
+export const SG_API_BASE_URL = 'http://localhost:3000/api/v1';
+
+// Other app constants
+export const APP_NAME = 'SilverGuild';
+
+// API Endpoints
+export const SG_API_ENDPOINTS = {
+    users: '/users',
+    characters: '/characters',
+} as const;

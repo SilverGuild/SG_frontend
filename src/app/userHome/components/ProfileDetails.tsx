@@ -1,18 +1,14 @@
 import { User } from '@/types/user';
 
 interface ProfileDetailsProps {
-    user: User | null;
+    user: User;
 }
 
 export default function ProfileDetails({ user }: ProfileDetailsProps) {
-    if (!user) {
-        return <div>No user data available!</div> // Receive error from back end display
-    }
-    
     return (
-        <div> 
-            <div> 
-               <img alt={ user.username }/>
+        <div className="flex flex-col items-center flex-1 bg-cyan-950 m-4 p-4 rounded-lg"> 
+            <div className="w-32 h-32 rounded-full bg-gray-300 mb-4 overflow-hidden"> 
+               <img src="" alt={ user.username }/>
             </div>
             <dl>
                 <dt>Username:</dt>

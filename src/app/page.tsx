@@ -1,14 +1,6 @@
-'use client'
-import { useState } from 'react';
+
 
 export default function Home() {
-  const [userInfo, setUserInfo] = useState({
-    name: "Elysa",
-    username: "bleu7",
-    email: "bleu@gmail.com",
-    characterCount: 7
-  })
-
   return (
     <div className="min-h-screen h-screen max-h-screen overflow-hidden fixed inset-0 w-full mt-0 flex flex-col justify-center align-items">
       <h1 className="text-8xl text-center title-font">SilverGuild</h1>

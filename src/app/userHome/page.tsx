@@ -1,9 +1,20 @@
+'use client';
+
+import { useData } from '@/app/providers/DataProvider';
 import ProfileDetails from './components/ProfileDetails';
+import CharacterRoster from './components/CharacterRoster';
 
 export default function UserHome() {
+    const { user, characters } = useData();
+    
+    if (!user) {
+      return <div>Loading user...</div>; // Receive error from back end display
+    }
+    
     return (
-      <div className="flex justify-center align-items w-full h-1vh">
-        <ProfileDetails />
+      <div className="flex justify-around items-center w-full h-screen">
+        <ProfileDetails user={user} />
+        <CharacterRoster characters={characters} userId={user.id} />
       </div>
     );
   }

@@ -7,5 +7,7 @@ export const APP_NAME = 'SilverGuild';
 // API Endpoints
 export const SG_API_ENDPOINTS = {
     users: '/users',
+    userById: (id: number ) => `/users/${id}`,
     characters: '/characters',
+    characterById: (id: number) => `/characters/$(id)`,
 } as const;

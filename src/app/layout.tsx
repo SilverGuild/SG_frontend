@@ -20,12 +20,14 @@ export default function RootLayout({
         className={`${geistSans.variable} ${geistMono.variable} ${beau_rivage.variable} antialiased`}
       >
         <DataProvider>
-          <div className="top-0">
-            <Header />
+          <div className="flex flex-col w-full h-screen">
+            <div className="top-0 left-0 w-full ">
+              <Header />
+            </div>
+            <main className="flex items-center justify-center w-full h-screen pt-40">
+              {children}
+            </main>
           </div>
-          <main>
-            {children}
-          </main>
         </DataProvider>
       </body>
     </html>

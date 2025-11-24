@@ -3,6 +3,7 @@
 import { createContext, useContext, useState, ReactNode } from 'react';
 import { User } from '@/types/user';
 import { Character } from '@/types/character';
+import { SG_API_BASE_URL, SG_API_ENDPOINTS } from '@/lib/config';
 import { mockUser } from '@/lib/mock/userData';
 import { mockCharacters} from '@/lib/mock/characterData';
 

@@ -1,6 +1,7 @@
 import { SG_API_BASE_URL, SG_API_ENDPOINTS } from './config';
 import { Character } from '@/types/character';
 import { User } from '@/types/user';
+import { JsonApiResponse, extractSingle } from './jsonApiClient';
 
 export async function apiRequest<T>(
     endpoint: string,
@@ -17,10 +18,11 @@ export async function apiRequest<T>(
    if(!response.ok) {
     throw new Error(`API ERROR: ${response.statusText}`);
    }
-
+   
    return response.json();
 }
 
 export async function fetchUser(id: number): Promise<User> {
-    return apiRequest<User>(SG_API_ENDPOINTS.userById(id))
+    const json = await apiRequest<JsonApiResponse<User>>(SG_API_ENDPOINTS.userById(id));
+    return extractSingle<User>(json);
 }

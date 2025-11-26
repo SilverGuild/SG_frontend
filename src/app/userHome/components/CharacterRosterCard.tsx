@@ -1,15 +1,15 @@
-import { Character } from '@/types/character';
+import { Character } from '@/types/character'
 
 interface CharacterRosterCardProps {
-    character: Character;
+    character: Character
 }
 
-export default function CharacterRosterCard({character}: CharacterRosterCardProps) {
+export default function CharacterRosterCard({ character }: CharacterRosterCardProps) {
     return (
         <div className="flex items-center bg-gray-800 m-2 p-4 rounded-lg w-full">
             <div className="w-16 h-16 rounded-full bg-gray-300 mr-2 mb-4 overflow-hidde shrink-0">
                 {/*  eslint-disable-next-line @next/next/no-img-element */}
-                <img src={""} alt={character.name}/>
+                <img src={''} alt={character.name} />
             </div>
             <div className="flex-1 w-full text-center">
                 <h3>{character.name}</h3>
@@ -31,5 +31,5 @@ export default function CharacterRosterCard({character}: CharacterRosterCardProp
                 </dl>
             </div>
         </div>
-    );
-};
+    )
+}

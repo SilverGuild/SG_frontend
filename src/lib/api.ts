@@ -1,5 +1,4 @@
 import { SG_API_BASE_URL, SG_API_ENDPOINTS } from './config';
-import { Character } from '@/types/character';
 import { User } from '@/types/user';
 import { JsonApiResponse, extractSingle } from './jsonApiClient';
 

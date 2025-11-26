@@ -14,7 +14,7 @@ export default function CharacterRoster({ characters }: CharacterRosterProps) {
     console.log(characters);
 
 
-    let roster = characters.map((character) => {
+    const roster = characters.map((character) => {
         return (
             <CharacterRosterCard 
                 key = {character.id}

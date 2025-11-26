@@ -1,25 +1,24 @@
-'use client';
+'use client'
 
-import { useData } from '@/app/providers/DataProvider';
-import ProfileDetails from './components/ProfileDetails';
-import CharacterRoster from './components/CharacterRoster';
+import { useData } from '@/app/providers/DataProvider'
+import ProfileDetails from './components/ProfileDetails'
+import CharacterRoster from './components/CharacterRoster'
 
 export default function UserHome() {
-    const { user, characters, loading } = useData();
-    
+    const { user, characters, loading } = useData()
+
     if (loading) {
-      return <div>Loading...</div>;
+        return <div>Loading...</div>
     }
 
     if (!user) {
-      return <div>No user found!</div>; // Receive error from back end display
+        return <div>No user found!</div> // Receive error from back end display
     }
-    
+
     return (
-      <div className="flex justify-around items-center w-full h-screen">
-        <ProfileDetails user={user} />
-        <CharacterRoster characters={characters} userId={user.id} />
-      </div>
-    );
-  }
-  
+        <div className="flex justify-around items-center w-full h-screen">
+            <ProfileDetails user={user} />
+            <CharacterRoster characters={characters} userId={user.id} />
+        </div>
+    )
+}

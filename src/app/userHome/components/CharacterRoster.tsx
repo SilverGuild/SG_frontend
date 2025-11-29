@@ -3,12 +3,11 @@ import CharacterRosterCard from './CharacterRosterCard'
 
 interface CharacterRosterProps {
     characters: Character[]
-    userId: number
 }
 
 export default function CharacterRoster({ characters }: CharacterRosterProps) {
     if (!characters) {
-        return <div>No user data available!</div> // Receive error from back end display
+        return <div>No character data available!</div> // Receive error from back end display
     }
 
     const roster = characters.map((character) => {

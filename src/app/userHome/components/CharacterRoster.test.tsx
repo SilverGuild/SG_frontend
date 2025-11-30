@@ -1,11 +1,12 @@
 import { render, screen } from '@testing-library/react'
-import CharacterRoster from '@/app/userHome/components/CharacterRoster'
+import CharacterRoster from './CharacterRoster'
 import { mockCharacters } from '@/lib/mock/characterData'
 import '@testing-library/jest-dom'
 
 describe('CharacterRoster', () => {
     it('renders all character cards', () => {
         render(<CharacterRoster characters={mockCharacters} />)
+        console.log(mockCharacters);
 
         mockCharacters.forEach((character) => {
             expect(screen.getByText(character.name)).toBeInTheDocument()
@@ -24,7 +25,7 @@ describe('CharacterRoster', () => {
 
     it('shows empty state when no characters', () => {
         render(<CharacterRoster characters={[]} />)
-        
-        expect(screen.getAllByText(/No character data available!/i)).toBeInTheDocument()
+
+        expect(screen.getByText(/No character data available!/i)).toBeInTheDocument()
     })
 })

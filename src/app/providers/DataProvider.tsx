@@ -18,7 +18,7 @@ interface DataContextType {
 const DataContext = createContext<DataContextType | null>(null)
 
 // Toggle this to switch between mock and real data
-const USE_MOCK_DATA = false
+const USE_MOCK_DATA = true
 
 export function DataProvider({ children, userId }: { children: ReactNode; userId: number }) {
     const [user, setUser] = useState<User | null>(USE_MOCK_DATA ? mockUser : null)

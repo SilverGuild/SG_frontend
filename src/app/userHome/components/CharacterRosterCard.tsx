@@ -4,12 +4,14 @@ interface CharacterRosterCardProps {
     character: Character
 }
 
-export default function CharacterRosterCard({ character }: CharacterRosterCardProps) {
+export default function CharacterRosterCard({ character }: CharacterRosterCardProps) { 
     return (
         <div className="flex items-center bg-gray-800 m-2 p-4 rounded-lg w-full">
-            <div className="w-16 h-16 rounded-full bg-gray-300 mr-2 mb-4 overflow-hidde shrink-0">
-                {/*  eslint-disable-next-line @next/next/no-img-element */}
-                <img src={''} alt={character.name} />
+            <div className="w-16 h-16 rounded-full mr-2 mb-4 overflow-hidden shrink-0">
+                <img 
+                src={`https://ui-avatars.com/api/?name=${character.name}&size=64&background=random`}
+                alt={character.name}
+                />
             </div>
             <div className="flex-1 w-full text-center">
                 <h3>{character.name}</h3>

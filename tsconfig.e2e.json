@@ -1,0 +1,11 @@
+{
+  "extends": "./tsconfig.json",
+  "compilerOptions": {
+    "target": "ES2020",
+    "lib": ["ES2021"],
+    "types": ["@playwright/test", "node"],
+    "moduleResolution": "node"
+  },
+  "include": ["e2e/**/*"],
+  "exclude": ["node_modules"]
+}

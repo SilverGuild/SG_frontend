@@ -6,7 +6,6 @@ import '@testing-library/jest-dom'
 describe('CharacterRoster', () => {
     it('renders all character cards', () => {
         render(<CharacterRoster characters={mockCharacters} />)
-        console.log(mockCharacters);
 
         mockCharacters.forEach((character) => {
             expect(screen.getByText(character.name)).toBeInTheDocument()

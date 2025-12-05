@@ -12,6 +12,18 @@ const config: Config = {
   moduleNameMapper: {
     '^@/(.*)$': '<rootDir>/$1',
   },
+
+  testMatch: [
+    '<rootDir>/src/**/*.test.{js,jsx,ts,tsx}',
+    '<rootDir>/src/**/__tests__/**/*.{js,jsx,ts,tsx}',
+  ],
+
+  testPathIgnorePatterns: [
+    '/node_modules/',
+    '/e2e/',           // Ignore Playwright tests
+    '/.next/',
+    '/dist/',
+  ],
   
   // Coverage configuration
   collectCoverageFrom: [

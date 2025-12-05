@@ -17,7 +17,7 @@ export default function Header() {
                             <Link href="">About</Link>
                         </li>
                         <li>
-                            <Link href="/userHome">Profile</Link>
+                            <Link href="/profile">Profile</Link>
                         </li>
                         <li>
                             <Link href="/character">Create</Link>

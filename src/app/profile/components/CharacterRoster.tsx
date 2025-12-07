@@ -15,7 +15,7 @@ export default function CharacterRoster({ characters }: CharacterRosterProps) {
     )
 
     return (
-        <div className="flex flex-col items-center flex-2 bg-cyan-950 m-4 p-4 rounded-lg w-2/3">
+        <div data-testid="character-roster" className="flex flex-col items-center flex-2 bg-cyan-950 m-4 p-4 rounded-lg w-2/3">
             { content }
         </div>
     )

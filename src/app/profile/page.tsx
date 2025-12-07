@@ -16,8 +16,8 @@ export default function UserHome() {
     }
 
     return (
-        <div>
-            <h1>Profile</h1>
+        <div className="flex w-full gap-4">
+            <h1 className="whitespace-nowrap text-gray-900">Profile</h1>
             <div className="flex justify-around items-center w-full h-screen">
                 <ProfileDetails user={user} />
                 <CharacterRoster characters={characters} />

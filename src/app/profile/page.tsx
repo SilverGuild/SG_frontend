@@ -16,9 +16,12 @@ export default function UserHome() {
     }
 
     return (
-        <div className="flex justify-around items-center w-full h-screen">
-            <ProfileDetails user={user} />
-            <CharacterRoster characters={characters} />
+        <div>
+            <h1>Profile</h1>
+            <div className="flex justify-around items-center w-full h-screen">
+                <ProfileDetails user={user} />
+                <CharacterRoster characters={characters} />
+            </div>
         </div>
     )
 }

@@ -1,25 +1,23 @@
 // e2e/tests/profile/profile-navigation.spec.ts
-import { test } from '@playwright/test'
+import { test, expect as playwrightExpect } from '@playwright/test'
+import { isLeftOf } from '../../helper/positioning'
 
 test.describe('User Profile Navigation', () => {
   test.beforeEach(async ({ page }) => {
     // TODO: Login as test user
-    // TODO: Navigate to home/dashboard
-  })
-
-  test('user navigates to profile through the header', async ({ page }) => {
-    // TODO: Click profile link in header
-    // TODO: Verify URL is /profile
+    await page.goto('/profile')
   })
 
   test('profile displays details on left and character roster on right', async ({ page }) => {
-    // TODO: Navigate to profile
-    // TODO: Verify profile details section is visible on left
-    // TODO: Verify character roster section is visible on right
-    // TODO: Verify layout is side-by-side (not stacked)
+    const result = await isLeftOf(
+      page.locator('[data-testid="profile-details"]'),
+      page.locator('[data-testid="character-roster"]')
+    )
+
+    playwrightExpect(result).toBe(true)
   })
 
-  test('user can edit their profile', async ({ page }) => {
+  test.skip('user can edit their profile', async ({ page }) => {
     // TODO: Navigate to profile
     // TODO: Click edit profile button
     // TODO: Verify edit form appears
@@ -29,7 +27,7 @@ test.describe('User Profile Navigation', () => {
     // TODO: Verify changes are reflected
   })
 
-  test('user can cancel editing profile', async ({ page }) => {
+  test.skip('user can cancel editing profile', async ({ page }) => {
     // TODO: Navigate to profile
     // TODO: Click edit profile button
     // TODO: Make changes to fields
@@ -38,7 +36,7 @@ test.describe('User Profile Navigation', () => {
     // TODO: Verify changes were not saved
   })
 
-  test('user can scroll through character roster pages', async ({ page }) => {
+  test.skip('user can scroll through character roster pages', async ({ page }) => {
     // TODO: Navigate to profile
     // TODO: Scroll to character roster section
     // TODO: Click next page button
@@ -47,37 +45,32 @@ test.describe('User Profile Navigation', () => {
     // TODO: Verify original characters are displayed
   })
 
-  test('clicking on a character navigates away from profile', async ({ page }) => {
+  test.skip('clicking on a character navigates away from profile', async ({ page }) => {
     // TODO: Navigate to profile
     // TODO: Click on a character card
     // TODO: Verify URL changed to character detail page
     // TODO: Verify no longer on profile page
   })
 
-  test('clicking create new character navigates away from profile', async ({ page }) => {
+  test.skip('clicking create new character navigates away from profile', async ({ page }) => {
     // TODO: Navigate to profile
     // TODO: Click create new character button
     // TODO: Verify URL changed to character creation page
     // TODO: Verify character creation form is visible
   })
 
-  test('profile header displays user avatar', async ({ page }) => {
-    // TODO: Navigate to profile
-    // TODO: Verify avatar image is visible
-    // TODO: Verify avatar has correct alt text
-  })
-
-  test('profile displays user email', async ({ page }) => {
-    // TODO: Navigate to profile
-    // TODO: Verify email is displayed
-    // TODO: Verify email format is correct
+  test('profile displays user avatar', async ({ page }) => {
+    await playwrightExpect(page.locator('[data-testid="profile-avatar"]')).toBeVisible()
   })
 
   test('profile displays user name', async ({ page }) => {
-    // TODO: Navigate to profile
-    // TODO: Verify first name is displayed
-    // TODO: Verify last name is displayed
+    const usernameLabel = page.getByText('Username:', { exact: true })
+    const usernameValue = page.locator('dt:has-text("Username") + dd')
   })
+
+  test('profile displays user email', async ({ page }) => {
+  })
+
 
   test('empty character roster shows placeholder message and button', async ({ page }) => {
     // TODO: Login as user with no characters

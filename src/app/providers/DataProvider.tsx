@@ -3,8 +3,7 @@
 import { createContext, useContext, useState, useEffect, ReactNode } from 'react'
 import { User } from '@/types/user'
 import { Character } from '@/types/character'
-import { mockUser } from '@/lib/mock/userData'
-import { mockCharacters } from '@/lib/mock/characterData'
+import { mockUser, mockCharacters } from '@/mocks'
 import { fetchUser } from '@/lib/api'
 
 interface DataContextType {

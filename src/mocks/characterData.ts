@@ -44,3 +44,4 @@ export const mockCharacters: Character[] = [
         languages: ['common', 'gnomish'],
     },
 ]
+

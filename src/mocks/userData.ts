@@ -5,3 +5,4 @@ export const mockUser: User = {
     username: 'John Mockery',
     email: 'mockjohnny@gmail.com',
 }
+

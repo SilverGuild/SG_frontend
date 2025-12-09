@@ -1,9 +1,12 @@
+import { Dispatch, SetStateAction } from 'react'
 import { Character, User } from './index'
+
 
 export interface DataContextType {
     user: User | null
-    setUser: (user: User | null) => void
+    setUser: Dispatch<SetStateAction<User | null>>
     characters: Character[]
-    setCharacters: (characters: Character[]) => void
-    loading: boolean
+    setCharacters: Dispatch<SetStateAction<Character[]>>
+    loading: boolean,
+    isMockData: boolean
 }

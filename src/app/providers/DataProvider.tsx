@@ -1,15 +1,13 @@
 'use client'
 
 import { createContext, useContext, useState, useEffect, ReactNode } from 'react'
-import { User, Character, DataContextType } from '@/types'
-import { mockUser, mockCharacters } from '@/mocks'
-import { fetchUser } from '@/lib/api'
+import { DataContextType } from '@/types'
 
 const DataContext = createContext<DataContextType | null>(null)
 
-export function DataProvider({ children, userId }: { children: ReactNode; userId: number }) {
+export function DataProvider({ children, value }: { children: ReactNode; value: DataContextType }) {
     return (
-        <DataContext.Provider value={userId}>
+        <DataContext.Provider value={value}>
             {children}
         </DataContext.Provider>
     )

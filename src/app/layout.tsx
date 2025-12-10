@@ -19,7 +19,7 @@ export default function RootLayout({
             <body
                 className={`${geistSans.variable} ${geistMono.variable} ${beau_rivage.variable} antialiased`}
             >
-                <AppDataProvider userId={4}>
+                <AppDataProvider userId={7}> // Hard set for testing purposes
                     <div className="flex flex-col w-full h-screen">
                         <div className="top-0 left-0 w-full ">
                             <Header />

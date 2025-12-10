@@ -10,7 +10,7 @@ export default function CharacterRosterCard({ character }: CharacterRosterCardPr
         <div className="flex items-center bg-gray-800 m-2 p-4 rounded-lg w-full">
             <div className="w-16 h-16 rounded-full mr-2 mb-4 overflow-hidden shrink-0">
                 <Image
-                src={`https://ui-avatars.com/api/?name=${character.name}&size=64&background=random`}
+                src={`https://ui-avatars.com/api/?name=${character.name}&size=64&background=7B9BB3`}
                 alt={character.name}
                 width={80}
                 height={80}

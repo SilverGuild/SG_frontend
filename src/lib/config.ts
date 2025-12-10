@@ -9,7 +9,6 @@ export const SG_API_ENDPOINTS = {
     users: '/users',
     // eslint-disable-next-line @typescript-eslint/no-unused-vars
     userById: (id: number) => `/users/${id}`,
-    characters: '/characters',
-    // eslint-disable-next-line @typescript-eslint/no-unused-vars
-    characterById: (id: number) => `/characters/$(id)`,
+    charactersByUserId: (userId: number) => `/user/${userId}/characters`,
+    characterById: (id: number) => `/characters/${id}`
 } as const

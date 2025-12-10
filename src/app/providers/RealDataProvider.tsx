@@ -2,8 +2,8 @@
 
 import { useState, ReactNode, useEffect } from 'react'
 import { DataProvider } from '@/app/providers'
-import {User, Character } from '@/types'
-import { fetchUser } from '@/lib/api'
+import { User, Character } from '@/types'
+import { fetchUser, fetchUserCharacters } from '@/lib/api'
 
 export function RealDataProvider({ children, userId }: { children: ReactNode, userId?: number}) {
     const [ user, setUser ] = useState<User | null>(null)
@@ -20,8 +20,13 @@ export function RealDataProvider({ children, userId }: { children: ReactNode, us
             try {
                 setLoading(true)
 
-                const userData = await fetchUser(userId!)
+                const [ userData, characterData ] = await Promise.all([
+                    fetchUser(userId!),
+                    fetchUserCharacters(userId!)
+                ])
+
                 setUser(userData)
+                setCharacters(characterData)
 
             } catch (error) {
                 console.error('Failed to load data:', error)

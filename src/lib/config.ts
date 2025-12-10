@@ -6,9 +6,7 @@ export const APP_NAME = 'SilverGuild'
 
 // API Endpoints
 export const SG_API_ENDPOINTS = {
-    users: '/users',
-    // eslint-disable-next-line @typescript-eslint/no-unused-vars
     userById: (id: number) => `/users/${id}`,
-    charactersByUserId: (userId: number) => `/user/${userId}/characters`,
+    charactersByUserId: (userId: number) => `/users/${userId}/characters`,
     characterById: (id: number) => `/characters/${id}`
 } as const

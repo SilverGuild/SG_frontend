@@ -7,7 +7,7 @@ import {mockUser, mockCharacters } from '@/mocks'
 
 export function MockDataProvider({ children }: { children: ReactNode}) {
     const [ user, setUser ] = useState<User | null>(mockUser)
-    const [ characters, setCharacters ] = useState(mockCharacters)
+    const [ characters, setCharacters ] = useState<Character[]>(mockCharacters)
 
     return (
         <DataProvider

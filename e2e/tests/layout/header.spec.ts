@@ -13,6 +13,8 @@ test.describe('Homepage', () => {
         await page.getByRole('link', { name: /Profile/i }).click()
 
         await page.waitForURL('/profile')
+
+        await page.waitForLoadState('networkidle')
         
         await playwrightExpect(page).toHaveURL('/profile') 
         await playwrightExpect(page.getByRole('heading', { name: /Profile/i })).toBeVisible()

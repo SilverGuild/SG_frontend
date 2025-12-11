@@ -6,6 +6,7 @@ test.describe('User Profile Navigation', () => {
   test.beforeEach(async ({ page }) => {
     // TODO: Login as test user
     await page.goto('/profile')
+    await page.waitForLoadState('networkidle')
   })
 
   test('profile displays details on left and character roster on right', async ({ page }) => {

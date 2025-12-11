@@ -3,7 +3,7 @@
 import { ReactNode } from 'react'
 import { MockDataProvider, RealDataProvider } from '@/app/providers'
 
-const USE_MOCK_DATA = false
+const USE_MOCK_DATA = true
 
 export function AppDataProvider({ 
     children, 

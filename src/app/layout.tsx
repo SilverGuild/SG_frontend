@@ -2,7 +2,7 @@ import type { Metadata } from 'next'
 import { beau_rivage, geistSans, geistMono } from './fonts'
 import './globals.css'
 import Header from '../components/layout/Header/header'
-import { DataProvider } from './providers/DataProvider'
+import { AppDataProvider } from '@/app/providers'
 
 export const metadata: Metadata = {
     title: 'SilverGuild',
@@ -19,7 +19,7 @@ export default function RootLayout({
             <body
                 className={`${geistSans.variable} ${geistMono.variable} ${beau_rivage.variable} antialiased`}
             >
-                <DataProvider userId={4}>
+                <AppDataProvider userId={7}> {/* Hard set for testing purposes */}
                     <div className="flex flex-col w-full h-screen">
                         <div className="top-0 left-0 w-full ">
                             <Header />
@@ -28,7 +28,7 @@ export default function RootLayout({
                             {children}
                         </main>
                     </div>
-                </DataProvider>
+                </AppDataProvider>
             </body>
         </html>
     )

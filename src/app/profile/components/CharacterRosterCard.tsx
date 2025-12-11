@@ -1,3 +1,4 @@
+import Image from 'next/image'
 import { Character } from '@/types/character'
 
 interface CharacterRosterCardProps {
@@ -8,9 +9,11 @@ export default function CharacterRosterCard({ character }: CharacterRosterCardPr
     return (
         <div className="flex items-center bg-gray-800 m-2 p-4 rounded-lg w-full">
             <div className="w-16 h-16 rounded-full mr-2 mb-4 overflow-hidden shrink-0">
-                <img 
-                src={`https://ui-avatars.com/api/?name=${character.name}&size=64&background=random`}
+                <Image
+                src={`https://ui-avatars.com/api/?name=${character.name}&size=64&background=7B9BB3`}
                 alt={character.name}
+                width={80}
+                height={80}
                 />
             </div>
             <div className="flex-1 w-full text-center">

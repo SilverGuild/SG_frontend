@@ -3,7 +3,7 @@
 import { useState, ReactNode, useEffect } from 'react'
 import { DataProvider } from '@/app/providers'
 import { User, Character } from '@/types'
-import { fetchUser, fetchUserCharacters } from '@/lib/api'
+import { fetchUser, fetchUserCharacters } from '@/lib/api/api'
 
 export function RealDataProvider({ children, userId }: { children: ReactNode, userId?: number}) {
     const [ user, setUser ] = useState<User | null>(null)

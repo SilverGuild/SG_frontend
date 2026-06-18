@@ -4,6 +4,30 @@ The web client for **SilverGuild**, a Dungeons & Dragons toolkit for managing us
 
 This project is in early development. Profile and character-listing flows are working today; full interactive character sheets and authentication are on the near-term roadmap (see [Roadmap](#roadmap)).
 
+---
+
+## Table of Contents
+
+- [SilverGuild — Frontend](#silverguild--frontend)
+  - [Table of Contents](#table-of-contents)
+  - [Related Repositories](#related-repositories)
+  - [Screenshots](#screenshots)
+  - [Tech Stack](#tech-stack)
+  - [How It Talks to the Backend](#how-it-talks-to-the-backend)
+  - [Data Providers](#data-providers)
+  - [Project Structure](#project-structure)
+  - [Getting Started](#getting-started)
+    - [Prerequisites](#prerequisites)
+    - [Setup](#setup)
+  - [Scripts](#scripts)
+  - [Testing](#testing)
+  - [Current Status](#current-status)
+  - [Roadmap](#roadmap)
+  - [Contributors](#contributors)
+  - [License](#license)
+
+---
+
 ## Related Repositories
 
 - **Backend (Ruby on Rails API):** [SilverGuild/SG_backend](https://github.com/SilverGuild/SG_backend) — same organization. Serves all data this app consumes, over a JSON:API-style interface.
@@ -200,6 +224,18 @@ Roughly in priority order:
 4. **Landing-page animation** — polish the main landing page with motion.
 
 > Both repos currently run their pipelines through **GitHub Actions** (CI), not a hosted environment — proper deployment is item 3 above.
+
+## Contributors
+
+| Name | Role | GitHub |
+| --- | --- | --- |
+| Elysa Ward | Founder | [@elysableu](https://github.com/elysableu) |
+| Andy Richardson | Co-Founder | [@theandyman007](https://github.com/theandyman007) |
+
+
+<!-- Add a row per contributor as the team grows. -->
+
+Contributions are welcome. Fork the repo, branch off `develop`, and open a pull request — the [pull request template](.github/pull_request_template.md) will guide your description. CI (lint, type-check, unit, and end-to-end tests) must pass before a merge.
 
 ## License
 

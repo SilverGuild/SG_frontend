@@ -7,25 +7,22 @@ interface ProfileDetailsProps {
 
 export default function ProfileDetails({ user }: ProfileDetailsProps) {
     return (
-        <div data-testid="profile-details" className="flex-column items-center bg-gray-800 m-2 p-5 rounded-lg w-1/3 h-">
-            <div className="w-16 h-16 rounded-full mr-2 mb-4 overflow-hidden shrink-0">
-               <Image 
+        <div data-testid="profile-details" className="flex flex-col items-center justify-evenly bg-gray-800 py-10 gap-y-5">
+            <div className="w-28 h-28 rounded-full overflow-hidden mt-10">
+                <Image 
                     data-testid="profile-avatar"
-                    src={`https://ui-avatars.com/api/?name=${user.username}&size=64&background=7B9BB3`}
+                    src={`https://ui-avatars.com/api/?name=${user.username}&size=128&background=7B9BB3`}
                     alt={user.username}
-                    width={120}
-                    height={120}
+                    width={128}
+                    height={128}
                     priority
                 />
-            </div>
+            </div> 
             <div>
-                <dl>
-                    <dt>Username:</dt>
-                    <dd>{user.username}</dd>
-
-                    <dt>Email:</dt>
-                    <dd>{user.email}</dd>
-                </dl>
+                <div className="text-4xl py-7 capitalize">
+                    <h3>{`${user.username}`}</h3> 
+                    {/* Add drop down here to display user's detailed informatiom (e.g. email, etc.) */}
+                </div>
             </div>
         </div>
     )

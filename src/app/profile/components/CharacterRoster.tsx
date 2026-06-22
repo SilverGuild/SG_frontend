@@ -15,8 +15,11 @@ export default function CharacterRoster({ characters }: CharacterRosterProps) {
     )
 
     return (
-        <div data-testid="character-roster" className="flex flex-col items-center flex-2 bg-cyan-950 m-4 p-4 rounded-lg w-2/3">
-            { content }
+        <div data-testid="character-roster" className="flex flex-col justify-center bg-cyan-95 py-5 w-full">
+            <h2 className="text-3xl text-left my-5">Characters:</h2>
+            <div className="flex flex-row flex-nowrap gap-3 overflow-x-auto w-full">
+                { content }
+            </div>
         </div>
     )
 }

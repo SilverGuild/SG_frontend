@@ -22,10 +22,10 @@ export default function RootLayout({
             <body
                 className={"antialiased"}
             >
-                <AppDataProvider userId={7}> {/* Hard set for testing purposes */}
+                <AppDataProvider userId={1}> {/* Hard set for testing purposes */}
                     <div className="flex flex-col w-full min-h-screen">
                         <Header />
-                        <main className="flex flex-1 items-center justify-center w-full">
+                        <main className="flex flex-1 items-center justify-center w-full pt-[170px] p-6">
                             {children}
                         </main>
                     </div>

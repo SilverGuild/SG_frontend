@@ -1,9 +1,7 @@
 import { render, screen } from '@testing-library/react'
-import CharacterRosterCard from './CharacterRosterCard'
+import CharacterRosterCard from '../components/CharacterRosterCard'
 import { mockCharacters } from '@/mocks/characterData'
 import '@testing-library/jest-dom'
-
-
 
 describe('CharacterRosterCard', () => {
     const mockCharacter = mockCharacters[0]

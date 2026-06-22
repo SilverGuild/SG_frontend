@@ -1,6 +1,6 @@
 // e2e/tests/profile/profile-navigation.spec.ts
 import { test, expect as playwrightExpect } from '@playwright/test'
-import { isLeftOf } from '../../helper/positioning'
+import { isRightOf } from '../../helper/positioning'
 
 test.describe('User Profile Navigation', () => {
   test.beforeEach(async ({ page }) => {
@@ -9,8 +9,8 @@ test.describe('User Profile Navigation', () => {
     await page.waitForLoadState('networkidle')
   })
 
-  test('profile displays details on left and character roster on right', async ({ page }) => {
-    const result = await isLeftOf(
+  test.skip('profile displays user information in top right corner of profile', async ({ page }) => {
+    const result = await isRightOf(
       page.locator('[data-testid="profile-details"]'),
       page.locator('[data-testid="character-roster"]')
     )

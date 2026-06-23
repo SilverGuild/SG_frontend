@@ -1,8 +1,8 @@
-import { Character } from '@/types/character'
+import { CharacterType } from '@/types/character'
 import CharacterRosterCard from './CharacterRosterCard'
 
 interface CharacterRosterProps {
-    characters: Character[]
+    characters: CharacterType[]
 }
 
 export default function CharacterRoster({ characters }: CharacterRosterProps) {

@@ -15,16 +15,17 @@ export default function RootLayout({
     children: React.ReactNode
 }>) {
     return (
-        <html lang="en">
+       <html
+            lang="en"
+            className={`${geistSans.variable} ${geistMono.variable} ${beau_rivage.variable}`}
+        >
             <body
-                className={`${geistSans.variable} ${geistMono.variable} ${beau_rivage.variable} antialiased`}
+                className={"antialiased"}
             >
-                <AppDataProvider userId={7}> {/* Hard set for testing purposes */}
-                    <div className="flex flex-col w-full h-screen">
-                        <div className="top-0 left-0 w-full ">
-                            <Header />
-                        </div>
-                        <main className="flex items-center justify-center w-full h-screen pt-40">
+                <AppDataProvider userId={1}> {/* Hard set for testing purposes */}
+                    <div className="flex flex-col w-full min-h-screen">
+                        <Header />
+                        <main className="flex flex-1 items-center justify-center w-full pt-[170px] p-6">
                             {children}
                         </main>
                     </div>

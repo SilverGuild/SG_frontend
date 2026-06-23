@@ -1,6 +1,6 @@
 import { Locator } from '@playwright/test'
 
-export async function isLeftOf(leftElement: Locator, rightElement: Locator) {
+export async function isRightOf(leftElement: Locator, rightElement: Locator) {
     await leftElement.waitFor({ state: 'visible', timeout: 15000 })
     await rightElement.waitFor({ state: 'visible', timeout: 15000 })
 
@@ -11,5 +11,5 @@ export async function isLeftOf(leftElement: Locator, rightElement: Locator) {
         throw new Error('Elements not found')
     }
 
-    return leftBox.x + leftBox.width <= rightBox.x
+    return leftBox.x + leftBox.width >= rightBox.x
 }

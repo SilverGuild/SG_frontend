@@ -16,12 +16,13 @@ export default function UserHome() {
     }
 
     return (
-        <div className="flex w-full gap-4">
-            <h1 className="whitespace-nowrap text-gray-900">Profile</h1>
-            <div className="flex justify-around items-center w-full h-screen">
-                <ProfileDetails user={user} />
-                <CharacterRoster characters={characters} />
-            </div>
+        <div className="grid grid-cols-[4fr_1fr] grid-rows-[1fr_repeat(6,1fr)] w-full min-h-screen gap-x-[15px] gap-y-4">
+                <div className="col-start-2 row-start-1 row-span-3 min-w-0">
+                    <ProfileDetails user={user} />
+                </div>
+                <div className="col-start-1 row-start-3 row-span-4 min-w-0">
+                    <CharacterRoster characters={characters} />
+                </div>
         </div>
     )
-}
+}                                               

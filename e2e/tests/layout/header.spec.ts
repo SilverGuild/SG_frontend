@@ -17,7 +17,6 @@ test.describe('Homepage', () => {
         await page.waitForLoadState('networkidle')
         
         await playwrightExpect(page).toHaveURL('/profile') 
-        await playwrightExpect(page.getByRole('heading', { name: /Profile/i })).toBeVisible()
     })
 
     test.skip('should navigate to the about page', async ({ page }) => {

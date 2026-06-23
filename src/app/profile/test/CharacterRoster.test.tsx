@@ -1,5 +1,5 @@
 import { render, screen } from '@testing-library/react'
-import CharacterRoster from './CharacterRoster'
+import CharacterRoster from '../components/CharacterRoster'
 import { mockCharacters } from '@/mocks/characterData'
 import '@testing-library/jest-dom'
 

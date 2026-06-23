@@ -20,12 +20,12 @@ export default function RootLayout({
             className={`${geistSans.variable} ${geistMono.variable} ${beau_rivage.variable}`}
         >
             <body
-                className={"antialiased"}
+                className={`antialiased overscroll-none`}
             >
                 <AppDataProvider userId={1}> {/* Hard set for testing purposes */}
                     <div className="flex flex-col w-full min-h-screen">
                         <Header />
-                        <main className="flex flex-1 items-center justify-center w-full pt-[170px] p-6">
+                        <main className="w-full p-6">
                             {children}
                         </main>
                     </div>

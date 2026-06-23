@@ -2,12 +2,12 @@
 
 import { useState, ReactNode } from 'react'
 import { DataProvider } from '@/app/providers'
-import { User, Character } from '@/types'
+import { User, CharacterType } from '@/types'
 import {mockUser, mockCharacters } from '@/mocks'
 
 export function MockDataProvider({ children }: { children: ReactNode}) {
     const [ user, setUser ] = useState<User | null>(mockUser)
-    const [ characters, setCharacters ] = useState<Character[]>(mockCharacters)
+    const [ characters, setCharacters ] = useState<CharacterType[]>(mockCharacters)
 
     return (
         <DataProvider

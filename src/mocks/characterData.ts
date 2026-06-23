@@ -1,6 +1,6 @@
-import { Character } from '@/types/character'
+import { CharacterType } from '@/types/character'
 
-export const mockCharacters: Character[] = [
+export const mockCharacters: CharacterType[] = [
     {
         id: 1,
         name: 'Theren Nightwhisper',

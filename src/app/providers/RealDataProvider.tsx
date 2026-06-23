@@ -2,12 +2,12 @@
 
 import { useState, ReactNode, useEffect } from 'react'
 import { DataProvider } from '@/app/providers'
-import { User, Character } from '@/types'
+import { User, CharacterType } from '@/types'
 import { fetchUser, fetchUserCharacters } from '@/lib/api/api'
 
 export function RealDataProvider({ children, userId }: { children: ReactNode, userId?: number}) {
     const [ user, setUser ] = useState<User | null>(null)
-    const [ characters, setCharacters ] = useState<Character[]>([])
+    const [ characters, setCharacters ] = useState<CharacterType[]>([])
     const [ loading, setLoading ] = useState(true)
 
     useEffect(() =>{

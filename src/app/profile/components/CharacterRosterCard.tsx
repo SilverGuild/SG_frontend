@@ -1,8 +1,8 @@
 import Image from 'next/image'
-import { Character } from '@/types/character'
+import { CharacterType } from '@/types/character'
 
 interface CharacterRosterCardProps {
-    character: Character
+    character: CharacterType
 }
 
 export default function CharacterRosterCard({ character }: CharacterRosterCardProps) { 

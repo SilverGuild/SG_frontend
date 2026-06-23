@@ -13,14 +13,13 @@ export default function Header() {
                 <nav className="basis-3/10 mr-10">
                     <ul className="flex flex-row mx-auto px-6 py-3 justify-between items-center text-xl">
                         <li>
-                            {/* Either About or Resources -> add Resources? */}
-                            <Link href="">About</Link>
-                        </li>
-                        <li>
                             <Link href="/profile">Profile</Link>
                         </li>
                         <li>
                             <Link href="/character">Create</Link>
+                        </li>
+                        <li>
+                            <Link href="">Resources</Link>
                         </li>
                     </ul>
                 </nav>

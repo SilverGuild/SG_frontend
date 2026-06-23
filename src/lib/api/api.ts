@@ -27,3 +27,30 @@ export async function fetchUserCharacters(id: number): Promise<Character[]> {
     const json = await apiRequest<JsonApiResponse<Character>>(SG_API_ENDPOINTS.charactersByUserId(id))
     return extractAll<Character>(json)
 }
+
+export async function fetchCharacter(id: number): Promise<Character> {
+    const json = await apiRequest<JsonApiResponse<Character>>(SG_API_ENDPOINTS.characterById(id))
+    return extractSingle<Character>(json)
+}
+
+export async function createCharacter(id: number, input: Character): Promise<Character> {
+    const json = await apiRequest<JsonApiResponse<Character>>(
+        SG_API_ENDPOINTS.charactersByUserId(id),
+        {
+            method: 'POST',
+            body: JSON.stringify({ character: input }),
+        },
+    )
+    return extractSingle<Character>(json)
+}
+
+export async function updateCharacter(id: number, changes: Partial<Character>): Promise<Character> {
+    const json = await apiRequest<JsonApiResponse<Character>>(
+        SG_API_ENDPOINTS.characterById(id),
+        {
+            method: 'PATCH',
+            body: JSON.stringify({ character: changes }),
+        },
+    )
+    return extractSingle<Character>(json)
+}

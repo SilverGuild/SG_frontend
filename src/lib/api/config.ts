@@ -8,5 +8,5 @@ export const APP_NAME = 'SilverGuild'
 export const SG_API_ENDPOINTS = {
     userById: (id: number) => `/users/${id}`,
     charactersByUserId: (userId: number) => `/users/${userId}/characters`,
-    characterById: (id: number) => `/characters/${id}`
+    characterById: (id: number) => `/characters/${id}`,
 } as const

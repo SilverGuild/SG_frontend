@@ -8,8 +8,7 @@ export interface DataContextType {
     characters: CharacterType[]
     setCharacters: Dispatch<SetStateAction<CharacterType[]>>
     addCharacter: (input: CharacterInput) => Promise<CharacterType>
-    loading: boolean,
-    isMockData: boolean
+    loading: boolean
 }
 
 export interface AppDataSeed {

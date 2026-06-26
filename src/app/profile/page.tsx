@@ -1,6 +1,6 @@
 'use client'
 
-import { useData } from '@/app/providers/DataProvider'
+import { useData } from '@/app/providers/DataContextProvider'
 import ProfileDetails from './components/ProfileDetails'
 import CharacterRoster from './components/CharacterRoster'
 

@@ -1,17 +1,23 @@
 // types/character.ts
-export interface CharacterType {
-    id: number
+
+interface CharacterBase {
     name: string
     level: number
     experience_points: number
     alignment: string
     background?: string
-    user_id: number
     character_class_id: string
     race_id: string
     subclass_id?: string
     subrace_id?: string
     languages: string[]
 }
+export interface CharacterType extends CharacterBase {
+    id: number
+    user_id: number
+}
+
+export type CharacterInput = CharacterBase
 
 export type CharacterMode = 'create' | 'view' | 'edit'
+

@@ -8,17 +8,13 @@ interface CharacterShellProps {
 
 export default function Character({ mode = 'create', character }: CharacterShellProps) {
     const heading = mode === 'create' ? 'New Character' : character?.name ?? 'Unnamed Character'
-    const summary = character 
-        ? `Level ${character.level} ${character.race_id} ${character.character_class_id}`
-        : null
 
     return (
        <div>
             <header>
                 <h1>{heading}</h1>
-                {mode !== 'create' && summary && <p>{summary}</p>}
             </header>
-            <CharacterSheet character={character} editable={mode !== 'view'} />
+            <CharacterSheet character={character} editable={mode !== 'view'} create={mode === 'create'}/>
        </div> 
     );
 }

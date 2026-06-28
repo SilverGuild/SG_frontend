@@ -1,12 +1,13 @@
 import { CharacterType } from '@/types'
-import Identity from './sections/Identity/Identity'
+import Identity from './sections/identity/Identity'
 
 interface CharcterSheetProps {
     character?: CharacterType
     editable?: boolean
+    create?: boolean
 }
 
-export default function CharacterSheet({ character, editable = false}: CharcterSheetProps) {
+export default function CharacterSheet({ character, editable = false, create = false}: CharcterSheetProps) {
 
     return (
         <>
@@ -14,7 +15,7 @@ export default function CharacterSheet({ character, editable = false}: CharcterS
             <div className="grid grid-cols-1 gap-4 sm:grid-cols-[2fr_1fr_1fr] pb-4">
                 {/* Identity -> name, class & level, race, background, alignment, XP */}
                 <div className="rounded border p-3">
-                    {/* <Identity character={character} editable={editable} /> */}
+                    <Identity character={character} editable={editable} create={create}/>
                 </div>
                 {/* Inspiration */}
                 <div className="rounded border p-3">Inspiration</div>

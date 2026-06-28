@@ -1,3 +1,5 @@
+'use client'
+
 interface FieldProps {
     label: string
     value?: string | number
@@ -8,7 +10,7 @@ interface FieldProps {
 export default function Field({label, value, editable, onChange}: FieldProps) {
     return (
         <label>
-            <span>{label}</span>
+            <span>{`${label}: `}</span>
             {editable ? (
                 <input className=""
                 value={value ?? ''}

@@ -8,8 +8,8 @@ interface CharacterBase {
     background?: string
     character_class_id: string
     race_id: string
-    subclass_id?: string
-    subrace_id?: string
+    subclass_id: string | null
+    subrace_id: string | null
     languages: string[]
 }
 export interface CharacterType extends CharacterBase {

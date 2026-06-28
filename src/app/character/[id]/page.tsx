@@ -17,3 +17,5 @@ export default async function ViewCharacter({ params }: {params: Promise<{id: st
 
     return <CharacterShell mode="view" character={character} />
 }
+
+export const dynamic = 'force-dynamic'

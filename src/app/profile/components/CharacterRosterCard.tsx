@@ -1,4 +1,5 @@
 import Image from 'next/image'
+import Link from 'next/link'
 import { CharacterType } from '@/types/character'
 
 interface CharacterRosterCardProps {
@@ -10,15 +11,12 @@ export default function CharacterRosterCard({ character }: CharacterRosterCardPr
     const avatarSrc = monogram; // Will add conditional to handle switch between default input avatar url and a potential null
 
     return (
-        <div className="flex flex-col items-center bg-gray-800 p-7 w-64 shrink-0">
+        <Link 
+            href={`/character/${character.id}`}
+            className="flex flex-col items-center bg-gray-800 p-6 w-64 shrink-0 transition hover:bg-gray-700 focus-visible:outline focus-visible:outline-2"
+        >
             <div className="w-20 h-20 rounded-full mt-5 mb-7 overflow-hidden shrink-0">
-                {}
-                <Image
-                src={avatarSrc}
-                alt={character.name}
-                width={96}
-                height={96}
-                />
+                <Image src={avatarSrc} alt={character.name} width={96} height={96} />
             </div>
             <div className="w-full min-w-0">
                 <h3 className="text-xl font-bold mb-3 p-2 text-center break-words">{character.name}</h3>
@@ -39,6 +37,6 @@ export default function CharacterRosterCard({ character }: CharacterRosterCardPr
                     </div>
                 </dl>
             </div>
-        </div>
+        </Link>
     )
 }

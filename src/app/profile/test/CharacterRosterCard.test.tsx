@@ -1,37 +1,39 @@
 import { render, screen } from '@testing-library/react'
 import CharacterRosterCard from '../components/CharacterRosterCard'
-import { mockCharacters } from '@/mocks/characterData'
+import { makeCharacters } from '@/test/factories'
 import '@testing-library/jest-dom'
 
+const testCharacters = makeCharacters(4)
+
 describe('CharacterRosterCard', () => {
-    const mockCharacter = mockCharacters[0]
+    const testCharacter = testCharacters[0]
     
     beforeEach(() => {
-        render(<CharacterRosterCard character={mockCharacter} />)
+        render(<CharacterRosterCard character={testCharacter} />)
     })
 
     it('renders character token', () => {
-        const img = screen.getByAltText(mockCharacter.name)
+        const img = screen.getByAltText(testCharacter.name)
         expect(img).toBeInTheDocument()
     })
 
     it('renders character name', () => {
-        expect(screen.getByRole('heading', { level: 3 })).toHaveTextContent(mockCharacter.name)
+        expect(screen.getByRole('heading', { level: 3 })).toHaveTextContent(testCharacter.name)
     })
 
     it('renders character level', () => {
         expect(screen.getByText('Level:')).toBeInTheDocument()
-        expect(screen.getByText(mockCharacter.level.toString())).toBeInTheDocument()
+        expect(screen.getByText(testCharacter.level.toString())).toBeInTheDocument()
     })
     
     it('renders character class', () => {
         expect(screen.getByText('Class:')).toBeInTheDocument()
-        expect(screen.getByText(mockCharacter.character_class_id)).toBeInTheDocument()
+        expect(screen.getByText(testCharacter.character_class_id)).toBeInTheDocument()
     })
     
     it('renders character race', () => {
         expect(screen.getByText('Race:')).toBeInTheDocument()
-        expect(screen.getByText(mockCharacter.race_id)).toBeInTheDocument()
+        expect(screen.getByText(testCharacter.race_id)).toBeInTheDocument()
     })
 
 })

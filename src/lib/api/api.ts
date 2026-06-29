@@ -1,5 +1,5 @@
 import { SG_API_BASE_URL, SG_API_ENDPOINTS } from './config'
-import { User, CharacterType } from '@/types'
+import { User, CharacterType, CharacterInput } from '@/types'
 import { JsonApiResponse, extractSingle, extractAll } from './jsonApiClient'
 
 export async function apiRequest<T>(endpoint: string, options?: RequestInit): Promise<T> {
@@ -33,7 +33,7 @@ export async function fetchCharacter(id: number): Promise<CharacterType> {
     return extractSingle<CharacterType>(json)
 }
 
-export async function createCharacter(id: number, input: CharacterType): Promise<CharacterType> {
+export async function createCharacter(id: number, input: CharacterInput): Promise<CharacterType> {
     const json = await apiRequest<JsonApiResponse<CharacterType>>(
         SG_API_ENDPOINTS.charactersByUserId(id),
         {

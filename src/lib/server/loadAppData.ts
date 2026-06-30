@@ -1,9 +1,9 @@
 import { fetchUser, fetchUserCharacters } from '@/lib/api/api'
 
-export async function loadAppData(userId: number) {
+export async function loadAppData(userId: number, cookieHeader?: string) {
     const [user, characters] = await Promise.all([ 
         fetchUser(userId),
-        fetchUserCharacters(userId),
+        fetchUserCharacters(userId, cookieHeader),
     ])
     return { user, characters }
 }

@@ -1,6 +1,6 @@
 import Image from 'next/image'
 import Link from 'next/link'
-import { CharacterType } from '@/types/character'
+import { CharacterType } from '@/types'
 
 interface CharacterRosterCardProps {
     character: CharacterType

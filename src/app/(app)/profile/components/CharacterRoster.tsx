@@ -1,4 +1,4 @@
-import { CharacterType } from '@/types/character'
+import { CharacterType } from '@/types'
 import CharacterRosterCard from './CharacterRosterCard'
 
 interface CharacterRosterProps {

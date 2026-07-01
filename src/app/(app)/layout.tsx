@@ -1,21 +1,30 @@
+import { cookies } from 'next/headers'
+import { redirect } from 'next/navigation'
 import { AppDataProvider } from "../providers"
-import { loadAppData } from "@/lib/server/loadAppData"
 import type { User, CharacterType } from "@/types"
+import { fetchCurrentUser, fetchUserCharacters } from '@/lib/api/api'
 
 export const dynamic = 'force-dynamic' // Temporary: auth's session dependency will make this intrinsic
 
 export default async function AppLayout({ children }: { children: React.ReactNode }) {
-    const userId = 1 // Temporary: stand-in for the session user
-
-    let user: User | null = null
+    const cookieStore = await cookies()
+    const cookieHeader = cookieStore.toString()
+    
+    let user: (User & { id: number }) | null = null
     let characters: CharacterType[] = []
+    let backendUnreachable = false
 
     try {
-        const data = await loadAppData(userId)
-        user = data.user
-        characters = data.characters
+        user = await fetchCurrentUser(cookieHeader)
+        if (user) {
+            characters = await fetchUserCharacters(user.id, cookieHeader)
+        }
     } catch (err) {
-        console.log('loadAppData failed; rendering with empty data:', err)
+        backendUnreachable = true
+    }
+
+    if (!backendUnreachable && !user) {
+        redirect('/login')
     }
 
     return (

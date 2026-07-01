@@ -1,5 +1,5 @@
 import Image from 'next/image'
-import { User } from '@/types/user'
+import { User } from '@/types'
 
 interface ProfileDetailsProps {
     user: User

@@ -1,6 +1,7 @@
 import { SG_API_BASE_URL, SG_API_ENDPOINTS } from './config'
 import { User, CharacterType, CharacterInput } from '@/types'
 import { JsonApiResponse, extractSingle, extractAll } from './jsonApiClient'
+import { isStatusError } from './errors'
 
 export async function apiRequest<T>(
     endpoint: string, 
@@ -26,8 +27,24 @@ export async function apiRequest<T>(
     return response.json()
 }
 
+export async function login(username: string, password: string): Promise<User> {
+    const json = await apiRequest<JsonApiResponse<User>>(
+        SG_API_ENDPOINTS.login(),
+        {
+            method: 'POST',
+            body: JSON.stringify({ session: { username, password }}),
+        },
+    )
+    return extractSingle<User>(json)
+}
+
+
 export async function fetchUser(id: number, cookieHeader?: string): Promise<User> {
-    const json = await apiRequest<JsonApiResponse<User>>(SG_API_ENDPOINTS.userById(id))
+    const json = await apiRequest<JsonApiResponse<User>>(
+        SG_API_ENDPOINTS.userById(id),
+        undefined,
+        cookieHeader,
+    )
     return extractSingle<User>(json)
 }
 
@@ -40,7 +57,7 @@ export async function fetchCurrentUser(cookieHeader?: string): Promise<(User & {
         )
         return extractSingle<User>(json)
     } catch (err) {
-        if ((err as Error & { status?: number }).status === 401) {
+        if (isStatusError(err) && err.status === 401) {
             return null
         }
         throw err
@@ -48,7 +65,12 @@ export async function fetchCurrentUser(cookieHeader?: string): Promise<(User & {
 }
 
 export async function fetchUserCharacters(id: number, cookieHeader?: string): Promise<CharacterType[]> {
-    const json = await apiRequest<JsonApiResponse<CharacterType>>(SG_API_ENDPOINTS.charactersByUserId(id))
+    const json = await apiRequest<JsonApiResponse<CharacterType>>(
+        SG_API_ENDPOINTS.charactersByUserId(id),
+        undefined,
+        cookieHeader
+    )
+
     return extractAll<CharacterType>(json)
 }
 
@@ -78,3 +100,4 @@ export async function updateCharacter(id: number, changes: Partial<CharacterType
     )
     return extractSingle<CharacterType>(json)
 }
+

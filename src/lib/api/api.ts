@@ -41,6 +41,30 @@ export async function apiRequest<T>(
     return response.json()
 }
 
+export async function signup(input: {
+    username: string,
+    email: string,
+    password: string,
+    passwordConfirmation: string
+}): Promise<User> {
+
+    const json = await apiRequest<JsonApiResponse<User>>(
+        SG_API_ENDPOINTS.signup(),
+        {
+            method: 'POST',
+            body: JSON.stringify({
+                user: {
+                    username: input.username,
+                    email: input.email,
+                    password: input.password,
+                    passwordConfirmation: input.passwordConfirmation,
+                },
+            }),
+        },
+    )
+    return extractSingle<User>(json);
+}
+
 export async function login(username: string, password: string): Promise<User> {
     const json = await apiRequest<JsonApiResponse<User>>(
         SG_API_ENDPOINTS.login(),

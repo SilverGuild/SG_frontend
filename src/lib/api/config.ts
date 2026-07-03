@@ -10,6 +10,7 @@ export const SG_API_ENDPOINTS = {
     charactersByUserId: (userId: number) => `/users/${userId}/characters`,
     characterById: (id: number) => `/characters/${id}`,
     // Auth
+    signup: () => `/signup`,
     login: () => `/login`,
     logout: () => `/logout`,
     current: () => `/current`,

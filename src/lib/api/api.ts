@@ -24,6 +24,10 @@ export async function apiRequest<T>(
         throw error
     }
 
+    if (response.status === 204) {
+        return undefined as T
+    }
+
     return response.json()
 }
 
@@ -36,6 +40,10 @@ export async function login(username: string, password: string): Promise<User> {
         },
     )
     return extractSingle<User>(json)
+}
+
+export async function logout(): Promise<void> {
+    await apiRequest<void>(SG_API_ENDPOINTS.logout(), { method: 'DELETE' })
 }
 
 

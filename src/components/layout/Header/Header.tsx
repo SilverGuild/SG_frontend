@@ -1,5 +1,6 @@
 import Link from 'next/link'
 import Image from 'next/image'
+import LogoutButton from './LogoutButton'
 
 export default function Header() {
     return (
@@ -20,6 +21,9 @@ export default function Header() {
                         </li>
                         <li>
                             <Link href="">Resources</Link>
+                        </li>
+                        <li>
+                            <LogoutButton />
                         </li>
                     </ul>
                 </nav>

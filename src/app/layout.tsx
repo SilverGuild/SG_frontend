@@ -1,7 +1,7 @@
 import type { Metadata } from 'next'
 import { beau_rivage, geistSans, geistMono } from './fonts'
 import './globals.css'
-import Header from '../components/layout/Header/header'
+import Header from '../components/layout/Header/Header'
 
 export const metadata: Metadata = {
     title: 'SilverGuild',

@@ -19,12 +19,50 @@ export async function apiRequest<T>(
     })
 
     if (!response.ok) {
-        const error = new Error(`API ERROR: ${response.statusText}`) as Error & { status?: number }
+        let message = `API ERROR: ${response.statusText}`
+        try {
+            const body = await response.json()
+            if (typeof body?.error === 'string') {
+                message = body.error
+            }
+        } catch {
+
+        }
+
+        const error = new Error(message) as Error & { status?: number }
         error.status = response.status
         throw error
     }
 
+    if (response.status === 204) {
+        return undefined as T
+    }
+
     return response.json()
+}
+
+export async function signup(input: {
+    username: string,
+    email: string,
+    password: string,
+    passwordConfirmation: string
+}): Promise<User> {
+
+    const json = await apiRequest<JsonApiResponse<User>>(
+        SG_API_ENDPOINTS.signup(),
+        {
+            method: 'POST',
+            body: JSON.stringify({
+                user: {
+                    username: input.username,
+                    email: input.email,
+                    password: input.password,
+                    password_confirmation: input.passwordConfirmation,
+                },
+            }),
+        },
+    )
+    return extractSingle<User>(json);
 }
 
 export async function login(username: string, password: string): Promise<User> {
@@ -38,14 +76,8 @@ export async function login(username: string, password: string): Promise<User> {
     return extractSingle<User>(json)
 }
 
-
-export async function fetchUser(id: number, cookieHeader?: string): Promise<User> {
-    const json = await apiRequest<JsonApiResponse<User>>(
-        SG_API_ENDPOINTS.userById(id),
-        undefined,
-        cookieHeader,
-    )
-    return extractSingle<User>(json)
+export async function logout(): Promise<void> {
+    await apiRequest<void>(SG_API_ENDPOINTS.logout(), { method: 'DELETE' })
 }
 
 export async function fetchCurrentUser(cookieHeader?: string): Promise<(User & { id: number }) | null> {

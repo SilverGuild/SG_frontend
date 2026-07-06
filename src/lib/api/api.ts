@@ -57,7 +57,7 @@ export async function signup(input: {
                     username: input.username,
                     email: input.email,
                     password: input.password,
-                    passwordConfirmation: input.passwordConfirmation,
+                    password_confirmation: input.passwordConfirmation,
                 },
             }),
         },

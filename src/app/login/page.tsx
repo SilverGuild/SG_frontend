@@ -12,7 +12,7 @@ export default async function Login({
             <h2>Log in to SilverGuild</h2>
             { logoutIssue && (
                 <p role="alert" className="">
-                    We could&apot;t confirm your session fully ended. If you&apos;re on a shared device, please close all browser windows o be safe.
+                    We could&apos;t confirm your session fully ended. If you&apos;re on a shared device, please close all browser windows o be safe.
                 </p>
             )}
             { accountCreated && (

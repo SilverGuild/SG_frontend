@@ -68,7 +68,7 @@ export default function SignUpForm() {
             <div className="">
                 <label htmlFor="password" className="">Password</label>
                 <input 
-                    id="password" name="password" type="text" autoComplete="new-password" required
+                    id="password" name="password" type="password" autoComplete="new-password" required
                     value={password} onChange={(e) => setPassword(e.target.value)}
                     className="" disabled={pending}
                 />
@@ -76,7 +76,7 @@ export default function SignUpForm() {
             <div className="">
                 <label htmlFor="confirmPassword" className="">Confirm Password</label>
                 <input 
-                    id="confirmPassword" name="confirmPassword" type="text" autoComplete="new-password" required
+                    id="confirmPassword" name="confirmPassword" type="password" autoComplete="new-password" required
                     value={confirmPassword} onChange={(e) => setConfirmPassword(e.target.value)}
                     className="" disabled={pending}
                 />

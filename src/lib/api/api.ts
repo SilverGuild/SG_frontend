@@ -80,16 +80,6 @@ export async function logout(): Promise<void> {
     await apiRequest<void>(SG_API_ENDPOINTS.logout(), { method: 'DELETE' })
 }
 
-
-export async function fetchUser(id: number, cookieHeader?: string): Promise<User> {
-    const json = await apiRequest<JsonApiResponse<User>>(
-        SG_API_ENDPOINTS.userById(id),
-        undefined,
-        cookieHeader,
-    )
-    return extractSingle<User>(json)
-}
-
 export async function fetchCurrentUser(cookieHeader?: string): Promise<(User & { id: number }) | null> {
     try {
         const json = await apiRequest<JsonApiResponse<User>>(

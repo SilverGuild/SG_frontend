@@ -1,4 +1,5 @@
 import LoginForm from './components/LoginForm'
+import AuthCard from '@/components/ui/AuthCard'
 
 export default async function Login({
     searchParams,
@@ -8,19 +9,18 @@ export default async function Login({
     const { logoutIssue, accountCreated } = await searchParams
 
     return (
-        <div>
-            <h2>Log in to SilverGuild</h2>
+        <AuthCard title="Log in to SilverGuild">
             { logoutIssue && (
                 <p role="alert" className="">
-                    We could&apos;t confirm your session fully ended. If you&apos;re on a shared device, please close all browser windows o be safe.
+                    We couldn&apos;t confirm your session fully ended. If you&apos;re on a shared device, please close all browser windows to be safe.
                 </p>
             )}
             { accountCreated && (
-                <p role="alert" className="">
+                <p role="status" className="">
                     Account created! Please log in to continue.
                 </p>
             )}
             <LoginForm />
-        </div>
+        </AuthCard>
     )
 }

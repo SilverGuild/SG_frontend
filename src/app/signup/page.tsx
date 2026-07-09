@@ -1,10 +1,10 @@
 import SignUpForm from "./components/SignUpForm"
+import AuthCard from "@/components/ui/AuthCard"
 
 export default function SignUp() {
     return (
-        <div className="">
-            <h2 className="">Join the Guild</h2>
+        <AuthCard title="Join the Guild">
             <SignUpForm />
-        </div>
+        </AuthCard>
     )
 }

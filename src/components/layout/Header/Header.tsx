@@ -2,6 +2,8 @@ import Link from 'next/link'
 import Image from 'next/image'
 import LogoutButton from './LogoutButton'
 
+const navLinkClasses = "inline-block text-moonlight transition-colors duration-300 hover:text-moonbeam hover:[text-shadow:0_0_12px_var(--color-arcane)] hover:animate-hover-rise"
+
 export default function Header() {
     return (
         <header className="sticky top-0 w-full bg-transparent z-50">
@@ -14,13 +16,13 @@ export default function Header() {
                 <nav className="basis-3/10 mr-10">
                     <ul className="flex flex-row mx-auto px-6 py-3 justify-between items-center text-xl">
                         <li>
-                            <Link href="/profile">Profile</Link>
+                            <Link href="/profile" className={navLinkClasses}>Profile</Link>
                         </li>
                         <li>
-                            <Link href="/character">Create</Link>
+                            <Link href="/character" className={navLinkClasses}>Create</Link>
                         </li>
                         <li>
-                            <Link href="">Resources</Link>
+                            <Link href="" className={navLinkClasses}>Resources</Link>
                         </li>
                         <li>
                             <LogoutButton />

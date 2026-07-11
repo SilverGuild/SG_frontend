@@ -1,7 +1,7 @@
 import type { Metadata } from 'next'
 import { beau_rivage, geistSans, geistMono } from './fonts'
 import './globals.css'
-import Header from '../components/layout/Header/Header'
+import { Header } from '@/components'
 
 export const metadata: Metadata = {
     title: 'SilverGuild',
@@ -14,9 +14,9 @@ export default async function RootLayout({children}: Readonly<{
     return (
        <html lang="en" className={`${geistSans.variable} ${geistMono.variable} ${beau_rivage.variable}`} >
             <body className={`antialiased overscroll-none`} >
-                    <div className="flex flex-col w-full min-h-screen">
+                    <div className="flex flex-col w-full">
                         <Header />
-                        <main className="w-full p-6">
+                        <main className="w-full">
                             {children}
                         </main>
                     </div>

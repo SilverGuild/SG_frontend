@@ -32,7 +32,6 @@ const LAYERS: LayerConfig[] = [
     {
         key:'near', seed: 3, count: 26, size: [2.5, 3.5], opacity: [0.85, 1], riseDuration: [170, 220], drift: 18, pulseDuration: [2, 3.5], colors: [PALETTE.arcane, PALETTE.starlight], trail: true, trailLength: [10 , 15]
     },
-   
 ]
 
 const TWINKLE_COUNT = 35

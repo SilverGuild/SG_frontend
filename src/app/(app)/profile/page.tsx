@@ -14,7 +14,7 @@ export default function Profile() {
                 <PageBackdrop>
                     <MoonGlow />
                 </PageBackdrop>
-                <div className="flex items-center justify-center min-h-screen text-moonlight">
+                <div className="flex items-center justify-center min-h-full text-moonlight">
                     Loading...
                 </div>
             </>
@@ -27,7 +27,7 @@ export default function Profile() {
                 <PageBackdrop>
                     <MoonGlow />
                 </PageBackdrop>
-                <div className="flex items-center justify-center min-h-screen text-moonlight">
+                <div className="flex items-center justify-center min-h-full text-moonlight">
                     No User Found!
                 </div>
             </>
@@ -40,7 +40,7 @@ export default function Profile() {
                 <StarField />
                 <MoonGlow />
             </PageBackdrop>
-            <div className="grid grid-cols-[4fr_1fr] grid-rows-[1fr_repeat(6,1fr)] w-full min-h-screen gap-x-[15px] gap-y-4 animate-fade-in-up">
+            <div className="grid grid-cols-[4fr_1fr] grid-rows-[1fr_repeat(6,1fr)] w-full min-h-full gap-x-[15px] gap-y-4 animate-fade-in-up">
                     <div className="col-start-2 row-start-1 row-span-3 min-w-0">
                         <ProfileDetails user={user} />
                     </div>

@@ -14,9 +14,9 @@ export default async function RootLayout({children}: Readonly<{
     return (
        <html lang="en" className={`${geistSans.variable} ${geistMono.variable} ${beau_rivage.variable}`} >
             <body className={`antialiased overscroll-none`} >
-                    <div className="flex flex-col w-full">
+                    <div className="flex flex-col w-full h-dvh">
                         <Header />
-                        <main className="w-full">
+                        <main className="w-full flex-1 min-h-0 overflow-y-auto p-8">
                             {children}
                         </main>
                     </div>

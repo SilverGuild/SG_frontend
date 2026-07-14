@@ -9,7 +9,7 @@ export default function ProfileDetails({ user }: ProfileDetailsProps) {
     return (
         <div 
             data-testid="profile-details" 
-            className="flex flex-col items-center justify-evenly py-10 gap-y-5 rounded-2xl border border-mist/50 bg-nightveil/80 backdrop-blur-md shadow=[0_0_30px_-10px_var(--color-lunar)]"
+            className="flex flex-col items-center justify-evenly w-full py-10 gap-y-5 rounded-2xl border border-mist/50 bg-nightveil/80 backdrop-blur-md shadow=[0_0_30px_-10px_var(--color-lunar)]"
         >
             <div className="w-28 h-28 rounded-full overflow-hidden mt-10 ring-2 ring-lunar/60 shadow=[0_0_20px_-4px_var(--color-arcane)]">
                 <Image 

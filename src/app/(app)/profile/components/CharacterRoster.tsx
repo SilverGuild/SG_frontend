@@ -19,7 +19,7 @@ export default function CharacterRoster({ characters }: CharacterRosterProps) {
             data-testid="character-roster" 
             className="flex flex-col justify-center py-5 px-6 w-full rounded-2xl border border-mist/50 bg-nightveil/60 backdrop-blur-md"
         >
-            <h2 className="text-3xl text-left my-5 title-font text-moonbeam [text-shadow:_0_0_16px_var(--color-lunar)]">
+            <h2 className="text-4xl text-left my-5 title-font text-moonbeam [text-shadow:_0_0_16px_var(--color-lunar)]">
                 Characters:
             </h2>
             <div className="flex flex-row flex-nowrap gap-5 overflow-x-auto w-full py-6 px-2 -mx-2">

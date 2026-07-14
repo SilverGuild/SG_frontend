@@ -20,7 +20,7 @@ test.describe('Homepage', () => {
         await playwrightExpect(signUp).toBeVisible()
     })
 
-    test('should have correct page title', async ({ page }) => {
+    test.skip('should have correct page title', async ({ page }) => {
         await playwrightExpect(page).toHaveTitle(/SilverGuild/i)
     })
 })

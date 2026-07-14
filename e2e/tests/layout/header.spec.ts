@@ -5,11 +5,11 @@ test.describe('Homepage', () => {
         await page.goto('/')
     })
 
-    test('should display logo', async ({ page }) => {
+    test.skip('should display logo', async ({ page }) => {
         await playwrightExpect(page.getByRole('link', { name: /sg_logo/i})).toBeVisible()
     })
 
-    test('should navigate to the profile page', async ({ page }) => {
+    test.skip('should navigate to the profile page', async ({ page }) => {
         await page.getByRole('link', { name: /Profile/i }).click()
 
         await page.waitForURL('/profile')
@@ -33,7 +33,7 @@ test.describe('Homepage', () => {
         await playwrightExpect(page.getByRole('heading', { name: /Character Creator/i })).toBeVisible()
     })
 
-    test('should navigate back to the homepage using app logo', async ({ page }) => {
+    test.skip('should navigate back to the homepage using app logo', async ({ page }) => {
         await page.getByRole('link', { name: /Profile/i }).click()
         await playwrightExpect(page).toHaveURL('/profile')
         

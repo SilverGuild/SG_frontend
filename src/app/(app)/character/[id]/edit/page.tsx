@@ -15,5 +15,5 @@ export default async function EditCharacter({ params }: {params: Promise<{id: st
             notFound()
         }
     
-        return <CharacterShell mode="view" character={character} />
+        return <CharacterShell mode="edit" character={character} />
 }

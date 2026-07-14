@@ -9,10 +9,10 @@ interface IdentityProps {
 
 export default function Identity({character, editable = false, create = false}: IdentityProps) {
     return (
-        <div className="p-3 grid grid-cols-2 gap-3 sm:grid-cols-3">
+        <div className="grid grid-cols-2 gap-3 sm:grid-cols-3">
             {!create ? 
                 <></> : 
-                <Field label="Name: " value={character?.name} editable={editable}/>
+                <Field label="Name" value={character?.name} editable={editable}/>
             }
             <Field label="Class" value={character?.character_class_id} editable={editable}/>
             <Field label="Level" value={character?.level} editable={editable}/>

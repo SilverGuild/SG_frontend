@@ -10,9 +10,9 @@ export default function Character({ mode = 'create', character }: CharacterShell
     const heading = mode === 'create' ? 'New Character' : character?.name ?? 'Unnamed Character'
 
     return (
-       <div>
-            <header>
-                <h1>{heading}</h1>
+       <div className="min-h-full animate-fade-in-up">
+            <header className="mb-6">
+                <h1 className="m-0 text-3xl font-blod text-moonbeam">{heading}</h1>
             </header>
             <CharacterSheet character={character} editable={mode !== 'view'} create={mode === 'create'}/>
        </div> 

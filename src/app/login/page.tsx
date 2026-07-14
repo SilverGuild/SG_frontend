@@ -1,4 +1,5 @@
 import LoginForm from './components/LoginForm'
+import { AuthCard, PageBackdrop, StarField, MoonGlow } from '@/components'
 
 export default async function Login({
     searchParams,
@@ -8,19 +9,24 @@ export default async function Login({
     const { logoutIssue, accountCreated } = await searchParams
 
     return (
-        <div>
-            <h2>Log in to SilverGuild</h2>
-            { logoutIssue && (
-                <p role="alert" className="">
-                    We could&apot;t confirm your session fully ended. If you&apos;re on a shared device, please close all browser windows o be safe.
-                </p>
-            )}
-            { accountCreated && (
-                <p role="alert" className="">
-                    Account created! Please log in to continue.
-                </p>
-            )}
-            <LoginForm />
-        </div>
+        <>
+            <PageBackdrop>
+                <StarField />
+                <MoonGlow />
+            </PageBackdrop>
+            <AuthCard title="Log in to SilverGuild">
+                { logoutIssue && (
+                    <p role="alert" className="">
+                        We couldn&apos;t confirm your session fully ended. If you&apos;re on a shared device, please close all browser windows to be safe.
+                    </p>
+                )}
+                { accountCreated && (
+                    <p role="status" className="">
+                        Account created! Please log in to continue.
+                    </p>
+                )}
+                <LoginForm />
+            </AuthCard>
+        </>
     )
 }

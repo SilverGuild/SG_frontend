@@ -1,18 +1,14 @@
 'use client'
 
-import { useEffect, useState } from 'react'
-import { usePathname, useRouter } from 'next/navigation'
+import { useState } from 'react'
+import { useRouter } from 'next/navigation'
 import { logout } from '@/lib/api/api'
+import { useLoggedIn } from '@/hooks/useLoggedIn'
 
-export default function LogoutButton() {
+export default function LogoutButton({ className }: { className?: string }) {
     const router = useRouter()
-    const pathname = usePathname()
-    const [ visible, setVisible ] = useState(false)
+    const visible = useLoggedIn()
     const [ pending, setPending ] = useState(false)
-
-    useEffect(() => {
-        setVisible(document.cookie.includes('sg_logged_in=1'))
-    }, [pathname])
 
     async function handleLogout() {
         setPending(true)
@@ -30,7 +26,7 @@ export default function LogoutButton() {
     if (!visible) return null
 
     return (
-        <button type="button" onClick={handleLogout} disabled={pending} className='text-white'>
+        <button type="button" onClick={handleLogout} disabled={pending} className={className}>
             {pending ? 'Logging out...' : 'Logout'}
         </button>
     )

@@ -1,5 +1,6 @@
 import { CharacterType } from '@/types'
 import Identity from './sections/identity/Identity'
+import Section from './shared/Section'
 
 interface CharcterSheetProps {
     character?: CharacterType
@@ -14,9 +15,9 @@ export default function CharacterSheet({ character, editable = false, create = f
             {/* Top bar -> Identity, Inspiration, Proficiency Bonus */}
             <div className="grid grid-cols-1 gap-4 sm:grid-cols-[2fr_1fr_1fr] pb-4">
                 {/* Identity -> name, class & level, race, background, alignment, XP */}
-                <div className="rounded border p-3">
+                <Section>
                     <Identity character={character} editable={editable} create={create}/>
-                </div>
+                </Section>
                 {/* Inspiration */}
                 <div className="rounded border p-3">Inspiration</div>
                 {/* Proficiency bonus */}

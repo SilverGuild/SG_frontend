@@ -1,28 +1,53 @@
 'use client'
 
 import { useData } from '@/app/providers/DataContextProvider'
+import { MoonGlow, PageBackdrop, StarField } from '@/components'
 import ProfileDetails from './components/ProfileDetails'
 import CharacterRoster from './components/CharacterRoster'
 
-export default function UserHome() {
+export default function Profile() {
     const { user, characters, loading } = useData()
 
     if (loading) {
-        return <div>Loading...</div>
+        return (
+            <>
+                <PageBackdrop>
+                    <MoonGlow />
+                </PageBackdrop>
+                <div className="flex items-center justify-center min-h-full text-moonlight">
+                    Loading...
+                </div>
+            </>
+        )
     }
 
     if (!user) {
-        return <div>No user found!</div> // Receive error from back end display
+        return (
+            <>
+                <PageBackdrop>
+                    <MoonGlow />
+                </PageBackdrop>
+                <div className="flex items-center justify-center min-h-full text-moonlight">
+                    No User Found!
+                </div>
+            </>
+        )
     }
 
     return (
-        <div className="grid grid-cols-[4fr_1fr] grid-rows-[1fr_repeat(6,1fr)] w-full min-h-screen gap-x-[15px] gap-y-4">
-                <div className="col-start-2 row-start-1 row-span-3 min-w-0">
-                    <ProfileDetails user={user} />
-                </div>
-                <div className="col-start-1 row-start-3 row-span-4 min-w-0">
-                    <CharacterRoster characters={characters} />
-                </div>
-        </div>
+        <> 
+            <PageBackdrop>
+                <StarField />
+                <MoonGlow />
+            </PageBackdrop>
+            <div className="flex w-full min-h-full gap-[15px] animate-fade-in-up">
+                    <div className="flex-1 min-w-0 flex justify-center items-center">
+                        <CharacterRoster characters={characters} />
+                    </div>
+                    <div className="w-72 shrink-0">
+                        <ProfileDetails user={user} />
+                    </div>
+            </div>
+        </>
     )
 }                                               

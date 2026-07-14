@@ -1,10 +1,16 @@
 import SignUpForm from "./components/SignUpForm"
+import { AuthCard, MoonGlow, PageBackdrop, StarField } from "@/components"
 
 export default function SignUp() {
     return (
-        <div className="">
-            <h2 className="">Join the Guild</h2>
-            <SignUpForm />
-        </div>
+        <>
+            <PageBackdrop>
+                <StarField />
+                <MoonGlow />
+            </PageBackdrop>
+            <AuthCard title="Join the Guild">
+                <SignUpForm />
+            </AuthCard>
+        </>
     )
 }

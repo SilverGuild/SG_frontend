@@ -1,27 +1,44 @@
+'use client'
+
+import { PageBackdrop, MoonGlow, StarField }from '@/components'
+import { useLoggedIn } from '@/hooks/useLoggedIn'
 import Link from 'next/link'
 
+const AccountLinkClass = "relative inline-flex items-center justify-center p-0.5 mb-2 me-2 overflow-hidden text-sm font-medium rounded-lg group bg-gradient-to-r from-lunar to-arcane transition-all duration-200 hover:brightness-110 hover:shadow-[0_0_20px_-4px_var(--color-arcane)] hover:-translate-y-0.5"
+const AccountTextClass = "relative px-5 py-2.5 bg-nightveil rounded-md text-moonbeam group-hover:bg-transparent transition-all duration-200"
+
 export default function Home() {
+    const loggedIn = useLoggedIn()
+
     return (
-        <div className="min-h-screen h-screen max-h-screen overflow-hidden fixed inset-0 w-full mt-0 flex flex-col justify-center align-items">
-            <h1 className="text-8xl text-center title-font">SilverGuild</h1>
-            <div className="flex justify-evenly align-items space-between mt-[3em]">
-                <Link 
-                    href="/login"
-                    className="relative inline-flex items-center justify-center p-0.5 mb-2 me-2 overflow-hidden text-sm font-medium text-gray-900 rounded-lg group bg-gradient-to-br from-cyan-500 to-blue-500 group-hover:from-cyan-500 group-hover:to-blue-500 hover:text-white dark:text-white focus:ring-4 focus:outline-none focus:ring-cyan-200 dark:focus:ring-cyan-800"
-                >
-                    <span className="relative px-5 py-2.5 transition-all ease-in duration-75 bg-white dark:bg-gray-900 rounded-md group-hover:bg-transparent group-hover:dark:bg-transparent">
-                        Enter the Guild
-                    </span>
-                </Link>
-                <Link
-                    href="/signup" 
-                    className="relative inline-flex items-center justify-center p-0.5 mb-2 me-2 overflow-hidden text-sm font-medium text-gray-900 rounded-lg group bg-gradient-to-br from-cyan-500 to-blue-500 group-hover:from-cyan-500 group-hover:to-blue-500 hover:text-white dark:text-white focus:ring-4 focus:outline-none focus:ring-cyan-200 dark:focus:ring-cyan-800"
-                >
-                    <span className="relative px-5 py-2.5 transition-all ease-in duration-75 bg-white dark:bg-gray-900 rounded-md group-hover:bg-transparent group-hover:dark:bg-transparent">
-                        Join the Guild
-                    </span>
-                </Link>
+        <>
+            <PageBackdrop>
+                <StarField />
+                <MoonGlow />
+            </PageBackdrop>
+            <div className="fixed inset-0 w-full overflow-hidden flex flex-col justify-center items-center">
+                <h1 className="text-8xl text-center title-font text-moonbeam [text-shadow:_0_0_30px_var(--color-lunar)] animate-fade-in-up">SilverGuild</h1>
+                {!loggedIn && (
+                    <div className="flex justify-evenly items-center gap-20 mt-[3em] animate-fade-in-up [animation-delay:150ms]">
+                        <Link 
+                            href="/login"
+                            className={ AccountLinkClass }
+                        >
+                            <span className={ AccountTextClass} >
+                                Enter the Guild
+                            </span>
+                        </Link>
+                        <Link
+                            href="/signup" 
+                            className={ AccountLinkClass }
+                        >
+                            <span className={ AccountTextClass } >
+                                Join the Guild
+                            </span>
+                        </Link>
+                    </div>
+                )}
             </div>
-        </div>
+        </>
     )
 }

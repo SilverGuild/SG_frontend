@@ -1,6 +1,22 @@
 import { CharacterType } from '@/types'
-import Identity from './sections/identity/Identity'
+
 import Section from './shared/Section'
+import { Identity, 
+        Inspiration, 
+        ProficiencyBonus, 
+        Abilities, 
+        SavingThrows, 
+        Skills, 
+        Passives,
+        Proficiencies,
+        Languages,
+        Defenses,
+        HitPoints,
+        DeathSaves,
+        Features,
+        Traits,
+
+    } from './sections'
 
 interface CharcterSheetProps {
     character?: CharacterType
@@ -19,9 +35,13 @@ export default function CharacterSheet({ character, editable = false, create = f
                     <Identity character={character} editable={editable} create={create}/>
                 </Section>
                 {/* Inspiration */}
-                <div className="rounded border p-3">Inspiration</div>
+                <Section>
+                    <Inspiration />
+                </Section>
                 {/* Proficiency bonus */}
-                <div className="rounded border p-3">Proficiency bonus</div>
+                  <Section>
+                    <ProficiencyBonus />
+                </Section>
             </div>
 
             {/* Character sheet grid -> grows to fill remaining height; one row on wide screens */}
@@ -33,44 +53,64 @@ export default function CharacterSheet({ character, editable = false, create = f
                         {/* Sub-column left -> Abilities over Saving throws */}
                         <div className="flex flex-col gap-4">
                             {/* Abilities (x6) */}
-                            <div className="flex-1 rounded border p-3">Abilities</div>
+                            <Section>
+                                <Abilities />
+                            </Section>
                             {/* Saving throws (x6) */}
-                            <div className="flex-1 rounded border p-3">Saving throws</div>
+                            <Section>
+                                <SavingThrows />
+                            </Section>
                         </div>
                         {/* Sub-column right -> Skills (x18) */}
-                        <div className="rounded border p-3">Skills</div>
+                        <Section>
+                            <Skills />
+                        </Section>
                     </div>
                     {/* Footer -> spans both sub-columns */}
                     <div className="flex flex-1 flex-col gap-4">
                         {/* Passives -> Perception, Insight, Investigation */}
-                        <div className="flex-1 rounded border p-3">Passives</div>
+                        <Section>
+                            <Passives />
+                        </Section>
                         {/* Proficiencies & languages */}
-                        <div className="flex-1 rounded border p-3">Proficiencies & languages</div>
+                        <Section>
+                            <Proficiencies />
+                            <Languages />
+                        </Section>
                     </div>
                 </div>
 
                 {/* Column 2 -> Combat */}
                 <div className="flex flex-col gap-4">
                     {/* Defenses -> AC, initiative, speed */}
-                    <div className="flex-1 rounded border p-3">Defenses</div>
+                    <Section>
+                        <Defenses />
+                    </Section>
                     {/* Hit points -> current, max, temp */}
-                    <div className="flex-1 rounded border p-3">Hit points</div>
+                    <Section>
+                        <HitPoints />
+                    </Section>
                     {/* Death saves */}
-                    <div className="flex-1 rounded border p-3">Death saves</div>
+                    <Section>
+                        <DeathSaves />
+                    </Section>
                     {/* Attacks & spells (list) */}
-                    <div className="flex-1 rounded border p-3">Attacks & spells</div>
+                    <Section>Attacks & spells</Section>
                     {/* Equipment (list) */}
-                    <div className="flex-1 rounded border p-3">Equipment</div>
+                    <Section>Equipment</Section>
                 </div>
 
                 {/* Column 3 -> Character */}
                 <div className="flex flex-col gap-4">
                     {/* Features & traits (list) */}
-                    <div className="flex-1 rounded border p-3">Features & traits</div>
+                    <Section>
+                        <Features />
+                        <Traits />
+                    </Section>
                     {/* Personality -> ideals, bonds, flaws */}
-                    <div className="flex-1 rounded border p-3">Personality</div>
+                    <Section>Personality</Section>
                     {/* Inventory, description, notes (list) */}
-                    <div className="flex-1 rounded border p-3">Inventory & notes</div>
+                    <Section>Inventory & notes</Section>
                 </div>
             </div>
         </>

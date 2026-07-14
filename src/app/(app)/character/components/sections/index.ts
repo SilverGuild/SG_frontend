@@ -7,7 +7,7 @@ export { default as Languages } from './core-stats/char-languages/Languages'
 export { default as Inspiration } from './core-stats/inspiration/Inspiration'
 export { default as Passives } from './core-stats/passives/Passives'
 export { default as Proficiencies } from './core-stats/proficiencies/Proficiencies'
-export { default as ProficicencyBonus } from './core-stats/proficiencies/ProficiencyBonus'
+export { default as ProficiencyBonus } from './core-stats/proficiencies/ProficiencyBonus'
 export { default as SavingThrows } from './core-stats/saving-throws/SavingThrows'
 export { default as Skills } from './core-stats/skills/Skills'
 

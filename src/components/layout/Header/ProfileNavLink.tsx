@@ -1,17 +1,11 @@
 'use client'
 
 import Link from 'next/link'
-import { usePathname } from 'next/navigation'
-import { useEffect, useState } from 'react'
+import { useLoggedIn } from '@/hooks/useLoggedIn'
 
 export default function ProfileNavLink({ className }: { className?: string }) {
-    const pathname = usePathname()
-    const [ visible, setVisible ] = useState(false)
-
-    useEffect(() => {
-        setVisible(document.cookie.includes('sg_logged_in=1'))
-    }, [pathname])
-
+    const visible = useLoggedIn()
+    
     if (!visible) return null
 
     return (

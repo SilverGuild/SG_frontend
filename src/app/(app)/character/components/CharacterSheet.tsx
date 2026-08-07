@@ -5,17 +5,15 @@ import { Identity,
         Inspiration, 
         ProficiencyBonus, 
         Abilities, 
-        SavingThrows, 
         Skills, 
         Passives,
         Proficiencies,
+        DeathSaves,
         Languages,
         Defenses,
         HitPoints,
-        DeathSaves,
         Features,
         Traits,
-
     } from './sections'
 
 interface CharcterSheetProps {
@@ -58,7 +56,7 @@ export default function CharacterSheet({ character, editable = false, create = f
                             </Section>
                             {/* Saving throws (x6) */}
                             <Section>
-                                <SavingThrows />
+                                <DeathSaves />
                             </Section>
                         </div>
                         {/* Sub-column right -> Skills (x18) */}

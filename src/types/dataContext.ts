@@ -8,6 +8,7 @@ export interface DataContextType {
     characters: CharacterType[]
     setCharacters: Dispatch<SetStateAction<CharacterType[]>>
     addCharacter: (input: CharacterInput) => Promise<CharacterType>
+    updateCharacter: (id: number, changes: Partial<CharacterType>) => Promise<CharacterType>
     loading: boolean
 }
 

@@ -7,9 +7,10 @@ interface AbilitiesProps {
     create?: boolean
 }
 
+
 export default function Abilities({character, editable = false, create = false}: AbilitiesProps) {
     return ( 
         <div>
-            <Field label="Abilities" value='' editable={editable}/>
+            {/* {abilitiesRoster} */}
         </div>
     )}

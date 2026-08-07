@@ -48,15 +48,11 @@ export default function CharacterSheet({ character, editable = false, create = f
                 <div className="flex flex-col gap-4">
                     {/* Sub-columns -> abilities/saves on the left, skills on the right */}
                     <div className="grid flex-1 grid-cols-1 gap-4 sm:grid-cols-2 sm:grid-rows-1">
-                        {/* Sub-column left -> Abilities over Saving throws */}
+                        {/* Sub-column left -> Abilities */}
                         <div className="flex flex-col gap-4">
                             {/* Abilities (x6) */}
                             <Section>
                                 <Abilities />
-                            </Section>
-                            {/* Saving throws (x6) */}
-                            <Section>
-                                <DeathSaves />
                             </Section>
                         </div>
                         {/* Sub-column right -> Skills (x18) */}

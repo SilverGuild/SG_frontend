@@ -7,7 +7,7 @@ interface SkillProps {
     create?: boolean
 }
 
-export default function Skil({character, editable = false, create = false}: SkillProps) {
+export default function Skill({character, editable = false, create = false}: SkillProps) {
     return ( 
         <div>
             <Field label="" value='' editable={editable}/>

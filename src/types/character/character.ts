@@ -1,7 +1,6 @@
 // types/character/character.ts
 
-import { AbilityScoreType, AbilityScoreInput, SkillType, SkillInput, CombatStatsType, CombatStatsInput } from '../index'
-import { SkillBase } from './skill'
+import { AbilityScoreType, AbilityScoreInput, SkillType, SkillInput, CombatStatsType, CombatStatsInput } from '@/types'
 
 interface CharacterBase {
     name: string
@@ -20,7 +19,7 @@ export interface CharacterType extends CharacterBase {
     user_id: number
     ability_scores: AbilityScoreType[]
     skills: SkillType[]
-    comabt_stats: CombatStatsType | null
+    combat_stats: CombatStatsType | null
 }
 
 export interface CharacterInput {

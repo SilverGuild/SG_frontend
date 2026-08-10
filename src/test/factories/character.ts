@@ -1,4 +1,4 @@
-import type { CharacterType } from "@/types"
+import type { AbilityId, AbilityScoreType, SkillType, CombatStatsType, CharacterType } from "@/types"
 
 
 // Domain Tables 
@@ -41,6 +41,8 @@ export function xpForLevel(level: number): number {
     return XP_THRESHOLDS[level - 1]
 }
 
+const ABILITY_IDS: AbilityId[] = ['str', 'dex', 'con', 'int', 'wis', 'cha']
+
 // Character Factory
 let nextId = 1
 
@@ -49,6 +51,29 @@ export function makeCharacter(overrides: Partial<CharacterType> = {}): Character
     const character_class_id = overrides.character_class_id ?? 'bard'
     const race_id = overrides.race_id ?? 'half-elf'
     const level = overrides.level ?? 5
+
+    const ability_scores: AbilityScoreType[] = ABILITY_IDS.map((ability_id, index) => ({
+        id: id *100 + index,
+        character_id: id,
+        ability_id,
+        score: 10,
+        saving_throw_proficient: false
+    }))
+
+    const skills: SkillType[] = []
+    const combat_stats: CombatStatsType = {
+        id,
+        character_id: id,
+        current_hp: 20,
+        max_hp: 20,
+        temporary_hp: 0,
+        hit_dice_remaining: level,
+        death_save_successes: 0,
+        death_save_failures: 0,
+        stable: true,
+        armor_class: 12,
+        conditions: [],
+    }
 
     return {
         id,
@@ -63,6 +88,9 @@ export function makeCharacter(overrides: Partial<CharacterType> = {}): Character
         subclass_id: CHARACTER_CLASSES[character_class_id]?.[0] ?? null,
         subrace_id: RACES[race_id]?.subraces[0] ?? null,
         languages: RACES[race_id]?.languages ?? ['common'],
+        ability_scores,
+        skills,
+        combat_stats,
         ...overrides,
     }
 

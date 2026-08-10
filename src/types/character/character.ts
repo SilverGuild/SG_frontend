@@ -1,4 +1,6 @@
-// types/character.ts
+// types/character/character.ts
+
+import { AbilityScoreType, AbilityScoreInput, SkillType, SkillInput, CombatStatsType, CombatStatsInput } from '@/types'
 
 interface CharacterBase {
     name: string
@@ -15,9 +17,17 @@ interface CharacterBase {
 export interface CharacterType extends CharacterBase {
     id: number
     user_id: number
+    ability_scores: AbilityScoreType[]
+    skills: SkillType[]
+    combat_stats: CombatStatsType | null
 }
 
-export type CharacterInput = CharacterBase
+export interface CharacterInput {
+    character: CharacterBase
+    ability_scores: AbilityScoreInput[]
+    skills: SkillInput[]
+    combat_stats?: CombatStatsInput
+}
 
 export type CharacterMode = 'create' | 'view' | 'edit'
 

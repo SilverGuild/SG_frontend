@@ -116,7 +116,7 @@ export async function createCharacter(id: number, input: CharacterInput): Promis
         SG_API_ENDPOINTS.charactersByUserId(id),
         {
             method: 'POST',
-            body: JSON.stringify({ character: input }),
+            body: JSON.stringify(input),
         },
     )
     return extractSingle<CharacterType>(json)

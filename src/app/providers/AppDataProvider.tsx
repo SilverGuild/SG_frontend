@@ -3,7 +3,7 @@
 import { useState, ReactNode } from 'react'
 import {useRouter } from 'next/navigation'
 import { DataContextProvider } from '@/app/providers'
-import { createCharacter, updateCharacter } from '@/lib/api/api'
+import { createCharacter, updateCharacter as apiUpdateCharacter} from '@/lib/api/api'
 import { User, CharacterType, CharacterInput, AppDataSeed } from '@/types'
 
 
@@ -26,7 +26,7 @@ export function AppDataProvider({ children, initialUser, initialCharacters } : A
     }
 
     async function updateCharacter(id: number, changes: Partial<CharacterType>): Promise<CharacterType> {
-        const updated = await updateCharacter(id, changes)
+        const updated = await apiUpdateCharacter(id, changes)
         setCharacters((prev) => prev.map((c) => (c.id === updated.id ? updated : c)))
         router.refresh()
         return updated

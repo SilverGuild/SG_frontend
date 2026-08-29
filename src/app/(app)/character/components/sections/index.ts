@@ -4,9 +4,7 @@ export { default as DeathSaves } from './combat/death-saves/DeathSaves'
 
 export { default as Abilities } from './core-stats/abilities/Abilities'
 export { default as Languages } from './core-stats/char-languages/Languages'
-export { default as Inspiration } from './core-stats/inspiration/Inspiration'
 export { default as Passives } from './core-stats/passives/Passives'
-export { default as Proficiencies } from './core-stats/proficiencies/Proficiencies'
 export { default as ProficiencyBonus } from './core-stats/proficiencies/ProficiencyBonus'
 export { default as Skills } from './core-stats/skills/Skills'
 

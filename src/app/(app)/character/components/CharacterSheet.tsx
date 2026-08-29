@@ -2,12 +2,10 @@ import { CharacterType } from '@/types'
 
 import Section from './shared/Section'
 import { Identity, 
-        Inspiration, 
         ProficiencyBonus, 
         Abilities, 
         Skills, 
         Passives,
-        Proficiencies,
         DeathSaves,
         Languages,
         Defenses,
@@ -16,13 +14,7 @@ import { Identity,
         Traits,
     } from './sections'
 
-interface CharcterSheetProps {
-    character?: CharacterType
-    editable?: boolean
-    create?: boolean
-}
-
-export default function CharacterSheet({ character, editable = false, create = false}: CharcterSheetProps) {
+export default function CharacterSheet() {
 
     return (
         <>
@@ -30,12 +22,12 @@ export default function CharacterSheet({ character, editable = false, create = f
             <div className="grid grid-cols-1 gap-4 sm:grid-cols-[2fr_1fr_1fr] pb-4">
                 {/* Identity -> name, class & level, race, background, alignment, XP */}
                 <Section>
-                    <Identity character={character} editable={editable} create={create}/>
+                    <Identity />
                 </Section>
                 {/* Inspiration */}
-                <Section>
+                {/* <Section>
                     <Inspiration />
-                </Section>
+                </Section> */}
                 {/* Proficiency bonus */}
                   <Section>
                     <ProficiencyBonus />
@@ -68,7 +60,7 @@ export default function CharacterSheet({ character, editable = false, create = f
                         </Section>
                         {/* Proficiencies & languages */}
                         <Section>
-                            <Proficiencies />
+                            {/* <Proficiencies /> */}
                             <Languages />
                         </Section>
                     </div>

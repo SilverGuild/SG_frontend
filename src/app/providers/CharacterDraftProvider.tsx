@@ -9,9 +9,9 @@ import {
     AbilityScoreInput,
     SkillInput,
     CombatStatsInput,
+    CharacterMode,
 } from '@/types'
-
-const ABILITY_IDS: AbilityId[] = ['str', 'dex', 'con', 'int', 'wis', 'cha']
+import { ABILITY_ORDER } from '@/lib/constants/dnd'
 
 const DEFAULT_COMBAT_STATS: CombatStatsInput = {
    current_hp: 0,
@@ -53,7 +53,7 @@ function buildDefaultDraft(): CharacterDraftState {
         subclass_id: null,
         subrace_id: null,
         languages: [],
-        ability_scores: ABILITY_IDS.map((ability_id) => ({
+        ability_scores: ABILITY_ORDER.map((ability_id) => ({
             ability_id,
             score: 10,
             saving_throw_proficient: false
@@ -106,7 +106,7 @@ type NonNestedField = keyof Omit<CharacterDraftState, 'ability_scores' | 'skills
 type DraftAction =
     | { type: 'SET_FIELD'; field: NonNestedField; value: CharacterDraftState[NonNestedField] }
     | { type: 'SET_ABILITY_SCORE'; ability_id: AbilityId; changes: Partial<Omit<AbilityScoreInput, 'ability_id'>> }
-    | { type: 'SET_SKILL'; skill_id: string; changes: Partial<Omit<SkillInput, 'skill_id '>> }
+    | { type: 'SET_SKILL'; skill_id: string; changes: Partial<Omit<SkillInput, 'skill_id'>> }
     | { type: 'REMOVE_SKILL'; skill_id: string }
     | { type: 'SET_COMBAT_STATS'; changes: Partial<CombatStatsInput> }
 
@@ -152,6 +152,8 @@ function draftReducer(state: CharacterDraftState, action: DraftAction): Characte
 }
 
 interface CharacterDraftContextValue {
+    mode: CharacterMode
+    editable: boolean
     draft: CharacterDraftState
     setField: < K extends NonNestedField>(field: K, value: CharacterDraftState[K]) => void
     setAbilityScore: (ability_id: AbilityId, changes: Partial<Omit<AbilityScoreInput, 'ability_id'>> ) => void
@@ -166,21 +168,22 @@ interface CharacterDraftContextValue {
 const CharacterDraftContext = createContext<CharacterDraftContextValue | null>(null)  
 
 interface CharacterDraftProviderProps {
-    mode: 'create' | 'edit'
+    mode: 'view' | 'create' | 'edit'
     initialCharacter?: CharacterType
     children: ReactNode
 }
 
 export function CharacterDraftProvider({ mode, initialCharacter, children } : CharacterDraftProviderProps) {
     const { addCharacter, updateCharacter } = useData()
-    const initialDraft = mode === 'edit' && initialCharacter
+    const initialDraft = (mode === 'edit' || mode === 'view') && initialCharacter
         ? buildDraftFromCharacter(initialCharacter)
         : buildDefaultDraft()
     const [state, dispatch] = useReducer(draftReducer, initialDraft)
     const [pending, setPending] = useState(false)
     const [error, setError] = useState<string | null>(null)
+    const editable = mode !== 'view'
 
-    function setField<K extends NonNestedField>(field: K, value:CharacterDraftState[K]) {
+    function setField<K extends NonNestedField>(field: K, value: CharacterDraftState[K]) {
         dispatch({ type: 'SET_FIELD', field, value})
     }
 
@@ -198,13 +201,14 @@ export function CharacterDraftProvider({ mode, initialCharacter, children } : Ch
     }
 
     async function submit(): Promise<CharacterType> {
+        if(mode === 'view') throw new Error('Cannot submit in view mode')
         setPending(true)
         setError(null)
         try {
             if (mode === 'create') {
                 const payload: CharacterInput = {
                     character: {
-                          name: state.name,
+                        name: state.name,
                         level: state.level,
                         experience_points: state.experience_points,
                         alignment: state.alignment,
@@ -245,7 +249,7 @@ export function CharacterDraftProvider({ mode, initialCharacter, children } : Ch
 
     return (
         <CharacterDraftContext.Provider
-            value={{ draft: state, setField, setAbilityScore, setSkill, removeSkill, setCombatStats, submit, pending, error }}
+           value={{ mode, editable, draft: state, setField, setAbilityScore, setSkill, removeSkill, setCombatStats, submit, pending, error }}
         >
             {children}
         </CharacterDraftContext.Provider>
